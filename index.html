@@ -1,0 +1,1641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Willow Real Estate — Property Proposal</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap');
+:root{
+  --serif:'Richmond Display','Cormorant Garamond',Georgia,serif;
+  --sans:'FormaDJR','DM Sans',Arial,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --gd:#282018;--gm:#333333;--gl:#555555;
+  --gold:#F2EEEB;--cream:#F2EEEB;--white:#fff;
+  --gray:#EDE9E5;--border:#D8D2CC;--muted:#444444;
+  --charcoal:#282018;--text:#000000;
+  --ph-bg:#F5F1ED;--ph-br:#A08060;
+}
+html{scroll-behavior:smooth;font-size:18px}
+body{font-family:var(--sans);color:var(--text);line-height:1.7;background:var(--white)}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:normal;line-height:1.3}
+p{margin-bottom:1em}p:last-child{margin-bottom:0}
+a{color:inherit}
+
+/* Layout */
+.wrap{max-width:1280px;margin:0 auto;padding:80px 60px}
+.sec-label{font-family:var(--sans);font-size:.7rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gl);margin-bottom:12px;display:block}
+.sec-title{font-size:2.4rem;color:var(--gd);margin-bottom:16px}
+.divider{width:60px;height:3px;background:var(--gold);margin-bottom:32px}
+
+/* Placeholders */
+.ph{display:inline-block;background:var(--ph-bg);border:1.5px dashed var(--ph-br);border-radius:4px;padding:2px 10px;font-family:'Courier New',monospace;font-size:.85em;color:var(--gm)}
+.ph-block{background:var(--ph-bg);border:1.5px dashed var(--ph-br);border-radius:8px;padding:18px 22px;margin:10px 0;font-family:'Courier New',monospace;font-size:.88em;color:var(--gm)}
+.ph-img{background:var(--gray);border:2px dashed var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-family:var(--sans);font-size:.8rem;letter-spacing:.1em}
+
+/* Nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--gd);padding:0 80px;height:60px;display:flex;align-items:center;justify-content:space-between}
+.nav-sub{font-family:var(--sans);font-size:.75rem;color:#fff;letter-spacing:.1em}
+#progress{height:3px;background:var(--gold);position:fixed;top:60px;left:0;z-index:999;transition:width .15s ease;width:0}
+
+/* Cover */
+.cover{min-height:100vh;position:relative;display:flex;flex-direction:column;justify-content:center;padding:120px 80px 80px;overflow:hidden;margin-top:60px}
+.cover-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:0}
+.cover-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(28,22,14,.78) 0%,rgba(28,22,14,.55) 100%);z-index:1}
+.cover-inner{position:relative;z-index:2;max-width:800px}
+.cover-tag{font-family:var(--sans);font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.cover h1{font-size:3.4rem;color:var(--white);margin-bottom:12px}
+.cover-sub{font-size:1.15rem;color:#fff;margin-bottom:36px;max-width:620px}
+.cover-address{font-family:var(--sans);font-size:.82rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);border-top:1px solid rgba(242,238,235,.3);padding-top:20px;margin-bottom:28px}
+.cover-meta{display:flex;gap:36px;flex-wrap:wrap}
+.cover-meta-item{font-family:var(--sans);font-size:.78rem;color:rgba(255,255,255,.85)}
+.cover-meta-item strong{display:block;color:#fff;font-size:.88rem;margin-bottom:2px}
+
+/* Advantage */
+.adv-bg{background:var(--cream);padding:110px 0}
+.adv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:44px}
+.adv-card{background:var(--white);border-radius:10px;padding:28px 24px;border-top:3px solid var(--gold);box-shadow:0 2px 10px rgba(0,0,0,.05)}
+.adv-card h3{font-size:1.1rem;color:var(--gd);margin-bottom:10px}
+.adv-card p{font-size:.9rem;color:var(--muted);margin:0}
+.adv-icon{font-size:1.6rem;margin-bottom:14px}
+.adv-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:44px;background:var(--gd);border-radius:14px;padding:36px}
+.adv-stat{text-align:center;color:var(--white)}
+.adv-stat .num{font-size:2.2rem;color:var(--gold);display:block}
+.adv-stat .lbl{font-family:var(--sans);font-size:.75rem;color:#fff}
+
+/* Your Home */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start}
+.prop-specs{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
+.spec-box{background:var(--gray);border-radius:8px;padding:12px 18px;text-align:center}
+.spec-box .spec-lbl{display:block;font-family:var(--sans);font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px}
+.spec-box .spec-val{font-size:1.4rem;color:var(--gd)}
+.strength-list{list-style:none;margin:14px 0}
+.strength-list li{padding:9px 0;border-bottom:1px solid var(--border);display:flex;gap:10px;font-size:.93rem}
+.strength-list li::before{content:'→';color:var(--gl);flex-shrink:0;margin-top:2px}
+.buyer-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.buyer-tag{background:var(--gd);color:var(--white);padding:7px 16px;border-radius:22px;font-family:var(--sans);font-size:.82rem}
+
+/* Tabs */
+.tabs{margin-top:28px}
+.tab-nav{display:flex;border-bottom:2px solid var(--border);overflow-x:auto}
+.tab-btn{flex:1;padding:13px 10px;background:none;border:none;font-family:var(--sans);font-size:.85rem;cursor:pointer;color:var(--muted);border-bottom:3px solid transparent;margin-bottom:-2px;white-space:nowrap;transition:all .2s;text-align:center}
+.tab-btn:hover{color:var(--gm)}
+.tab-btn.active{color:var(--gd);border-bottom-color:var(--gold);font-weight:700}
+.tab-pane{display:none;padding:28px 0;animation:fi .25s ease}
+.tab-pane.active{display:block}
+@keyframes fi{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.tab-pane h3{font-size:1.3rem;color:var(--gd);margin-bottom:14px}
+.tab-pane ul{margin-top:14px;padding-left:20px;color:#111;font-size:.93rem;line-height:2.1}
+.rec-box{background:var(--cream);border:1px solid var(--border);border-radius:12px;padding:52px 40px;margin-top:36px;text-align:center}
+.rec-box h4{font-family:var(--sans);font-size:.65rem;text-transform:uppercase;letter-spacing:.32em;color:var(--muted);margin-bottom:22px}
+.rec-box-method{font-family:var(--serif);font-size:4rem;color:var(--gd);letter-spacing:-.03em;line-height:1;font-style:italic}
+
+/* Marketing tab with image */
+.mkt-pane{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
+
+/* Cost table */
+.cost-tbl{width:100%;border-collapse:collapse;margin-top:28px}
+.cost-tbl th{background:var(--gd);color:var(--white);padding:13px 18px;text-align:left;font-family:var(--sans);font-size:.78rem;letter-spacing:.05em;text-transform:uppercase}
+.cost-tbl td{padding:13px 18px;border-bottom:1px solid var(--border);font-size:.93rem}
+.cost-tbl td:last-child{text-align:right;font-family:var(--sans)}
+.cost-tbl tr.total td{background:var(--cream);font-weight:700;font-size:1rem;border-top:2px solid var(--gold)}
+.cost-note{font-size:.82rem;color:var(--muted);margin-top:14px;font-style:italic}
+
+/* Timeline */
+.timeline{position:relative;margin-top:44px;padding-left:38px}
+.timeline::before{content:'';position:absolute;left:10px;top:0;bottom:0;width:2px;background:var(--gl)}
+.tl-phase{margin-bottom:36px;position:relative}
+.tl-dot{position:absolute;left:-34px;top:4px;width:16px;height:16px;border-radius:50%;background:var(--gold);border:3px solid var(--white);box-shadow:0 0 0 2px var(--gold)}
+.tl-dot.green{background:var(--gl);box-shadow:0 0 0 2px var(--gl)}
+.tl-lbl{font-family:var(--sans);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:3px}
+.tl-phase h3{font-size:1.05rem;color:var(--gd);margin-bottom:7px}
+.tl-phase p{color:#111;font-size:.88rem;max-width:600px;margin-bottom:10px}
+.tl-chips{display:flex;flex-wrap:wrap;gap:7px}
+.chip{background:var(--white);border:1px solid var(--border);border-radius:18px;padding:4px 13px;font-family:var(--sans);font-size:.78rem;color:var(--charcoal)}
+.chip.dk{background:var(--gd);color:var(--white);border-color:var(--gd)}
+.chip.gd{background:var(--gold);color:var(--charcoal);border-color:var(--gold);font-weight:600}
+
+/* Sales grid */
+.sales-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:28px}
+.sale-card{border:1px solid var(--border);border-radius:10px;overflow:hidden;background:var(--white);transition:transform .2s,box-shadow .2s}
+.sale-card:hover{transform:translateY(-3px);box-shadow:0 8px 22px rgba(0,0,0,.08)}
+.sale-img{height:150px}
+.sale-body{padding:18px}
+.sale-addr{font-size:.92rem;font-weight:700;color:var(--gd);margin-bottom:10px}
+.sale-specs-row{display:flex;gap:12px;font-family:var(--sans);font-size:.78rem;color:var(--muted);margin-bottom:10px}
+.sale-price{font-size:1.15rem;color:var(--gm);font-weight:700;font-family:var(--sans)}
+.sale-date{font-family:var(--sans);font-size:.78rem;color:var(--muted)}
+
+/* Testimonials */
+.test-bg{background:var(--gd);padding:110px 0}
+.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:36px}
+.test-card{background:rgba(255,255,255,.07);border-radius:10px;padding:26px;position:relative}
+.test-card::before{content:'"';font-size:3.5rem;color:var(--gold);opacity:.45;position:absolute;top:8px;left:18px;line-height:1}
+.test-text{color:#fff;font-size:.9rem;margin-top:18px;font-style:italic}
+.test-author{margin-top:16px;font-family:var(--sans);font-size:.82rem;color:#fff;font-style:normal}
+.stars{color:var(--gold);font-size:.85rem;margin-bottom:6px}
+
+/* Agent */
+.agent-layout{display:grid;grid-template-columns:300px 1fr;gap:52px;align-items:stretch}
+.agent-left-col{display:flex;flex-direction:column;gap:0}
+.agent-name{font-size:1.9rem;color:var(--gd);margin-bottom:4px}
+.agent-title-tag{font-family:var(--sans);font-size:.8rem;color:var(--gold);letter-spacing:.15em;text-transform:uppercase;margin-bottom:22px}
+.agent-badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.badge{background:var(--ph-bg);border:1.5px dashed var(--ph-br);border-radius:6px;padding:10px 14px}
+.badge .badge-lbl{font-family:var(--sans);font-size:.65rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:3px;display:block}
+
+/* Stats */
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:36px}
+.stat-box{background:var(--white);border-radius:10px;padding:28px 20px;text-align:center;border-top:3px solid var(--gl)}
+.stat-box .sn{font-size:2rem;color:var(--gd);display:block;margin-bottom:7px}
+.stat-box .sl{font-family:var(--sans);font-size:.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:.07em}
+
+/* Commission */
+.comm-box{background:var(--gd);color:var(--white);border-radius:14px;padding:44px;margin-top:36px;display:grid;grid-template-columns:1fr 1fr;gap:36px}
+.comm-box h3{color:var(--gold);font-size:1.05rem;margin-bottom:10px}
+.comm-box p{color:#fff;font-size:.93rem}
+.comm-rate{font-size:1.9rem;color:var(--gold);font-family:var(--sans);margin:10px 0}
+.comm-list{list-style:none;color:#fff;font-size:.92rem;line-height:2.1}
+.comm-list li::before{content:'✓  '}
+
+/* Next Steps */
+.steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:44px}
+.step{text-align:center;padding:20px 14px}
+.step-num{width:46px;height:46px;border-radius:50%;background:var(--gd);color:var(--white);font-family:var(--sans);font-size:1.1rem;display:flex;align-items:center;justify-content:center;margin:0 auto 14px}
+.step h4{font-size:.97rem;color:var(--gd);margin-bottom:7px}
+.step p{font-size:.83rem;color:var(--muted);margin:0}
+
+/* Thank You */
+.thankyou{background:var(--gd);padding:100px 40px;text-align:center}
+.thankyou h2{font-size:2.8rem;color:var(--white);margin-bottom:18px}
+.thankyou p{color:#fff;font-size:1rem;max-width:520px;margin:0 auto 14px}
+.btn-proceed{display:inline-block;background:var(--gold);color:var(--charcoal);padding:17px 46px;border-radius:4px;font-family:var(--sans);font-size:.95rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;margin-top:32px;transition:background .2s,transform .2s}
+.btn-proceed:hover{background:#b8953e;transform:translateY(-2px)}
+
+/* Footer */
+footer{background:#1A1410;padding:60px 0 28px}
+
+/* ===== INTAKE FORM (MULTI-STEP) ===== */
+#intake{position:fixed;inset:0;z-index:9999;background:var(--gd);display:flex;align-items:flex-start;justify-content:center;padding:28px;transition:opacity .5s ease;overflow-y:auto}
+#intake.hide{opacity:0;pointer-events:none}
+.intake-card{background:var(--cream);border-radius:16px;width:100%;max-width:700px;overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,.4);margin:auto}
+.intake-header{background:var(--gd);padding:26px 36px}
+.intake-logo{font-family:var(--sans);font-size:.88rem;letter-spacing:.25em;text-transform:uppercase;color:var(--white);margin-bottom:14px}
+.intake-logo span{color:var(--gold)}
+/* Step dots */
+.step-dots{display:flex;align-items:center;margin-bottom:14px}
+.step-dot{width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-family:var(--sans);font-size:.65rem;font-weight:700;color:rgba(255,255,255,.3);flex-shrink:0;transition:all .3s}
+.step-dot.done{background:var(--gold);color:var(--charcoal)}
+.step-dot.current{background:var(--white);color:var(--gd)}
+.step-line{flex:1;height:1px;background:rgba(255,255,255,.1);margin:0 4px;transition:background .3s}
+.step-line.done{background:var(--gold)}
+.intake-header h2{font-size:1.4rem;color:var(--white);font-weight:normal;margin-bottom:3px}
+.intake-header p{font-family:var(--sans);font-size:.75rem;color:rgba(255,255,255,.42);margin:0}
+/* Body */
+.intake-body{padding:28px 36px;max-height:calc(100vh - 220px);overflow-y:auto}
+.intake-step{display:none}
+.intake-step.active{display:block;animation:fi .25s ease}
+/* Form elements */
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.form-row.quad{grid-template-columns:repeat(4,1fr)}
+.form-row.triple{grid-template-columns:repeat(3,1fr)}
+.form-group{display:flex;flex-direction:column;margin-bottom:14px}
+.form-group label{font-family:var(--sans);font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:5px}
+.form-group input,.form-group textarea{border:1.5px solid var(--border);border-radius:6px;padding:10px 13px;font-family:var(--serif);font-size:.93rem;color:var(--text);background:var(--white);outline:none;transition:border-color .2s;resize:vertical}
+.form-group input:focus,.form-group textarea:focus{border-color:var(--gd)}
+.form-group input::placeholder,.form-group textarea::placeholder{color:#BFB8B0}
+.form-group input.err,.form-group textarea.err{border-color:#C84040}
+.intake-divider{height:1px;background:var(--border);margin:2px 0 16px}
+.intake-sec-lbl{font-family:var(--sans);font-size:.66rem;text-transform:uppercase;letter-spacing:.14em;color:var(--gl);margin-bottom:11px;display:block}
+/* Method of sale radio tiles */
+.method-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:13px;border-radius:6px;transition:outline .2s}
+.method-opt{position:relative}
+.method-opt input[type=radio]{position:absolute;opacity:0;width:0;height:0}
+.method-opt label{display:block;border:1.5px solid var(--border);border-radius:6px;padding:10px 14px;cursor:pointer;font-family:var(--sans);font-size:.83rem;color:var(--text);transition:all .2s;background:var(--white);text-align:center}
+.method-opt input:checked + label{border-color:var(--gd);background:var(--ph-bg);color:var(--gd);font-weight:700}
+.method-opt label:hover{border-color:var(--gm)}
+/* Currency input */
+.currency-wrap{position:relative}
+.currency-wrap::before{content:'$';position:absolute;left:12px;top:50%;transform:translateY(-50%);font-family:var(--sans);font-size:.85rem;color:var(--muted);pointer-events:none}
+.currency-wrap input{padding-left:24px}
+/* Comparable sale entries */
+.sale-entry{background:var(--gray);border-radius:8px;padding:14px 16px;margin-bottom:12px}
+.sale-entry-hdr{font-family:var(--sans);font-size:.64rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.sale-entry-hdr::after{content:'';flex:1;height:1px;background:var(--border)}
+/* Footer nav */
+.intake-footer{padding:0 36px 26px;display:flex;gap:10px}
+.btn-ib{background:transparent;color:var(--muted);border:1.5px solid var(--border);border-radius:6px;padding:12px 20px;font-family:var(--sans);font-size:.83rem;cursor:pointer;transition:all .2s;white-space:nowrap}
+.btn-ib:hover{border-color:var(--gd);color:var(--gd)}
+.btn-in,.btn-ig{flex:1;background:var(--gd);color:var(--white);border:none;border-radius:6px;padding:13px;font-family:var(--sans);font-size:.88rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:background .2s}
+.btn-in:hover,.btn-ig:hover{background:var(--gm)}
+.intake-note{font-family:var(--sans);font-size:.7rem;color:var(--muted);text-align:center;padding:0 36px 20px}
+
+/* Testimonial carousel */
+.test-carousel-wrap{position:relative;overflow:hidden;margin-top:36px}
+.test-track{display:flex;transition:transform .45s cubic-bezier(.4,0,.2,1);will-change:transform}
+.test-card{flex:0 0 340px;background:rgba(255,255,255,.07);border-radius:10px;padding:28px;position:relative;margin-right:20px}
+.test-card::before{content:'"';font-size:3.5rem;color:var(--gold);opacity:.45;position:absolute;top:8px;left:18px;line-height:1}
+.test-text{color:#fff;font-size:.92rem;margin-top:18px;font-style:italic;line-height:1.7}
+.test-author{margin-top:16px;font-family:var(--sans);font-size:.8rem;color:var(--gold);font-style:normal}
+.stars{color:var(--gold);font-size:.85rem;margin-bottom:6px}
+.test-nav{display:flex;align-items:center;justify-content:center;gap:20px;margin-top:28px}
+.test-arrow{background:rgba(255,255,255,.1);border:none;color:var(--white);width:40px;height:40px;border-radius:50%;cursor:pointer;font-size:1.1rem;transition:background .2s;display:flex;align-items:center;justify-content:center}
+.test-arrow:hover{background:var(--gold);color:var(--charcoal)}
+.test-dots{display:flex;gap:8px}
+.test-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.25);border:none;cursor:pointer;transition:background .2s;padding:0}
+.test-dot.active{background:var(--gold)}
+
+/* Agent photo */
+.agent-photo-img{width:100%;height:340px;object-fit:cover;object-position:top center;border-radius:10px;display:block}
+
+
+/* Fetch comparables */
+.btn-fetch-comp{width:100%;background:var(--gd);color:var(--white);border:none;border-radius:6px;padding:12px 16px;font-family:var(--sans);font-size:.88rem;font-weight:600;letter-spacing:.03em;cursor:pointer;transition:all .25s;margin-bottom:6px;display:flex;align-items:center;justify-content:center;gap:8px}
+.btn-fetch-comp:hover:not(:disabled){background:var(--gm)}
+.btn-fetch-comp:disabled{opacity:.75;cursor:default}
+.btn-fetch-comp.success{background:#4A7C59}
+.btn-fetch-comp.failed{background:#8B4040}
+.fetch-note{font-family:var(--sans);font-size:.7rem;color:var(--muted);margin-bottom:16px;line-height:1.5}
+@keyframes spin{to{transform:rotate(360deg)}}
+.spin{display:inline-block;animation:spin .8s linear infinite}
+
+/* ===== PREMIUM EDITORIAL LAYER ===== */
+
+/* Refined spacing & type scale */
+.wrap{padding:110px 80px}
+.sec-label{font-size:.6rem;letter-spacing:.45em}
+.sec-title{font-size:2.9rem;letter-spacing:-.025em;line-height:1.05}
+.divider{width:80px;height:1px;margin-bottom:48px}
+
+/* Full-bleed image bands */
+.img-band{position:relative;overflow:hidden;line-height:0}
+.img-band img{width:100%;display:block;object-fit:cover}
+.img-band .ib-ovl{position:absolute;inset:0}
+
+/* Advantage cards — editorial numbered, no emoji */
+.adv-icon{display:none}
+.adv-card{border-top:none;border-bottom:1px solid var(--border);border-radius:0;box-shadow:none;padding:40px 32px 36px}
+.adv-card:hover{border-bottom-color:var(--gold);transform:none;box-shadow:none}
+.adv-card-num{font-family:var(--sans);font-size:.6rem;letter-spacing:.35em;color:var(--muted);display:block;margin-bottom:22px;font-weight:600}
+.adv-grid{gap:0;border-top:1px solid var(--border)}
+
+/* Property hero */
+.prop-hero{width:100%;height:520px;overflow:hidden;display:block}
+.prop-hero img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* Sale cards premium */
+.sale-card{border-radius:2px;border:none;background:var(--white);box-shadow:0 1px 0 var(--border)}
+.sale-card:hover{transform:none;box-shadow:0 8px 32px rgba(0,0,0,.1)}
+.sale-img{height:220px}
+.sale-addr{font-size:1rem;letter-spacing:-.01em;line-height:1.35}
+.sale-spec-pill{display:inline-block;background:var(--gray);padding:3px 10px;border-radius:2px;font-family:var(--sans);font-size:.7rem;color:var(--muted);margin-right:3px;margin-bottom:4px}
+
+/* Testimonials decorative quote */
+#s10{position:relative;overflow:hidden}
+#s10::before{content:'\201C';font-size:28rem;color:rgba(255,255,255,.04);position:absolute;top:-40px;left:-10px;font-family:var(--serif);line-height:1;pointer-events:none;z-index:0;user-select:none}
+.test-featured{font-family:var(--serif);font-size:1.55rem;font-style:italic;color:#fff;line-height:1.65;max-width:680px;margin:0 auto 56px;text-align:center;position:relative;z-index:1;padding:0 20px}
+.test-featured-mark{display:block;font-size:3.5rem;line-height:.7;color:var(--gold);opacity:.7;font-family:var(--serif)}
+.test-featured-attr{font-family:var(--sans);font-size:.75rem;letter-spacing:.2em;color:var(--gold);margin-top:22px;display:block;font-style:normal}
+
+/* Dark agent section */
+#s11{background:var(--gd)}
+#s11 .sec-label{color:rgba(255,255,255,.38)}
+#s11 .sec-title{color:#fff}
+#s11 .divider{background:var(--gold)}
+#s11 .agent-name{color:#fff}
+#s11 .agent-title-tag{color:var(--gold)}
+#s11 .agent-contact-box{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:16px 18px;margin-top:16px}
+#s11 .agent-contact-lbl{font-family:var(--sans);font-size:.65rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.4);margin-bottom:8px;display:block}
+#s11 .agent-contact-item{font-size:.93rem;color:#fff;margin-bottom:4px}
+#s11 .agent-bio{color:rgba(255,255,255,.88);font-size:.95rem;line-height:1.82}
+#s11 .badge{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.14);color:#fff}
+#s11 .badge .badge-lbl{color:rgba(255,255,255,.42)}
+
+/* Stats premium */
+.stat-box{border-radius:2px;border-top:none;border-left:2px solid var(--gold);padding:32px 24px}
+.stat-box .sn{font-size:3rem;letter-spacing:-.03em}
+
+/* Editorial next steps */
+.steps-grid{grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--border);margin-top:52px}
+.step{padding:40px 24px 32px;border-right:1px solid var(--border);text-align:left}
+.step:last-child{border-right:none}
+.step-num{width:auto;height:auto;border-radius:0;background:none;color:var(--gd);font-family:var(--serif);font-size:3.2rem;font-style:italic;font-weight:normal;display:block;margin:0 0 20px;line-height:1}
+.step h4{font-size:.97rem;letter-spacing:-.01em;margin-bottom:10px;color:var(--gd)}
+.step p{font-size:.85rem;color:var(--muted);margin:0;line-height:1.7}
+
+/* Thank you with bg image */
+.thankyou{position:relative;overflow:hidden;padding:140px 40px}
+.thankyou-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;object-position:center}
+.thankyou-ovl{position:absolute;inset:0;background:rgba(20,16,10,.86);z-index:1}
+.thankyou-content{position:relative;z-index:2}
+
+/* Step card — no images, editorial numbers */
+.step{padding:40px 28px 36px;overflow:visible}
+
+/* Price estimate */
+.est-range{font-family:var(--serif);font-size:3.4rem;color:var(--gold);letter-spacing:-.03em;line-height:1.1;margin-bottom:8px;font-style:normal}
+
+/* Responsive */
+@media(max-width:768px){
+  .cover{padding:100px 28px 60px}
+  .cover h1{font-size:2rem}
+  .wrap{padding:60px 28px}
+  nav{padding:0 28px}
+  .adv-bg>div,.test-bg>div{padding:0 28px}
+  .adv-grid,.test-grid{grid-template-columns:1fr}
+  .adv-stats,.stats-grid{grid-template-columns:repeat(2,1fr)}
+  .two-col,.agent-layout,.mkt-pane,.comm-box{grid-template-columns:1fr}
+  #s-estimate .wrap>div[style*="grid"]{display:block}
+  #s-estimate .wrap>div>div:first-child{margin-bottom:44px}
+  .sales-grid{grid-template-columns:1fr 1fr}
+  .steps-grid{grid-template-columns:1fr 1fr}
+  .est-range{font-size:2.4rem}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== INTAKE FORM (5 STEPS) ===== -->
+<div id="intake" style="display:none">
+  <div class="intake-card">
+
+    <!-- Header -->
+    <div class="intake-header">
+      <div class="intake-logo">WILLOW <span>REAL ESTATE</span></div>
+      <div class="step-dots">
+        <div class="step-dot current" id="dot-1">1</div>
+        <div class="step-line" id="line-1"></div>
+        <div class="step-dot" id="dot-2">2</div>
+        <div class="step-line" id="line-2"></div>
+        <div class="step-dot" id="dot-3">3</div>
+        <div class="step-line" id="line-3"></div>
+        <div class="step-dot" id="dot-4">4</div>
+        <div class="step-line" id="line-4"></div>
+        <div class="step-dot" id="dot-5">5</div>
+      </div>
+      <h2 id="intake-title">Vendor &amp; Property Details</h2>
+      <p id="intake-sub">Basic details about the vendor and the property.</p>
+    </div>
+
+    <!-- Body -->
+    <div class="intake-body">
+
+      <!-- STEP 1: Vendor & Property -->
+      <div class="intake-step active" id="step1">
+        <span class="intake-sec-lbl">Vendor</span>
+        <div class="form-row">
+          <div class="form-group"><label>First Name</label><input type="text" id="f-fname" placeholder="e.g. Sarah" required></div>
+          <div class="form-group"><label>Last Name</label><input type="text" id="f-lname" placeholder="e.g. Thompson" required></div>
+        </div>
+        <div class="intake-divider"></div>
+        <span class="intake-sec-lbl">Property</span>
+        <div class="form-group"><label>Property Address</label><input type="text" id="f-address" placeholder="e.g. 14 Acacia Drive, Norwood SA 5067" required></div>
+        <div class="form-row quad">
+          <div class="form-group"><label>Bedrooms</label><input type="number" id="f-beds" min="0" max="20" placeholder="4" required></div>
+          <div class="form-group"><label>Bathrooms</label><input type="number" id="f-baths" min="0" max="20" placeholder="2" required></div>
+          <div class="form-group"><label>Car Spaces</label><input type="number" id="f-car" min="0" max="20" placeholder="2" required></div>
+          <div class="form-group"><label>Land Size</label><input type="text" id="f-land" placeholder="620m²" required></div>
+        </div>
+      </div>
+
+      <!-- STEP 2: Property Features -->
+      <div class="intake-step" id="step2">
+        <div class="form-group">
+          <label>Key Strengths</label>
+          <textarea id="f-strengths" rows="3" placeholder="e.g. North-facing backyard, recently renovated kitchen, double lock-up garage, quiet cul-de-sac, walking distance to schools and transport" required></textarea>
+        </div>
+        <div class="form-group">
+          <label>Buyer Pool</label>
+          <textarea id="f-buyers" rows="2" placeholder="e.g. Young families, upgraders, investors, downsizers" required></textarea>
+        </div>
+        <div class="intake-divider"></div>
+        <span class="intake-sec-lbl">Recommended Method of Sale</span>
+        <div class="method-grid" id="methodGrid">
+          <div class="method-opt"><input type="radio" name="method" id="m-auction" value="Auction"><label for="m-auction">Auction</label></div>
+          <div class="method-opt"><input type="radio" name="method" id="m-private" value="Private Sale"><label for="m-private">Private Sale</label></div>
+          <div class="method-opt"><input type="radio" name="method" id="m-best" value="Best Offers by Date"><label for="m-best">Best Offers by Date</label></div>
+          <div class="method-opt"><input type="radio" name="method" id="m-eoi" value="EOI"><label for="m-eoi">EOI</label></div>
+        </div>
+      </div>
+
+      <!-- STEP 3: Marketing Costs -->
+      <div class="intake-step" id="step3">
+        <span class="intake-sec-lbl">Marketing Investment</span>
+        <div class="form-row">
+          <div class="form-group"><label>Advertising</label><div class="currency-wrap"><input type="text" id="f-adv" placeholder="1,500" required></div></div>
+          <div class="form-group"><label>Signboard</label><div class="currency-wrap"><input type="text" id="f-sign" placeholder="450" required></div></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Brochures</label><div class="currency-wrap"><input type="text" id="f-bro" placeholder="180" required></div></div>
+          <div class="form-group"><label>DL Flyers</label><div class="currency-wrap"><input type="text" id="f-dl" placeholder="220" required></div></div>
+        </div>
+      </div>
+
+      <!-- STEP 4: Comparable Sales -->
+      <div class="intake-step" id="step4">
+        <span class="intake-sec-lbl">Recent Comparable Sales</span>
+        <button type="button" id="btn-fetch" class="btn-fetch-comp" onclick="fetchComparables()">
+          <span id="fetch-icon">🔍</span><span id="fetch-label">Auto-Fetch from Domain.com.au</span>
+        </button>
+        <p class="fetch-note">Uses the suburb &amp; bedroom count from Step 1 to find recently sold properties on Domain.com.au. Review each entry before proceeding — edit any field as needed.</p>
+
+        <div class="sale-entry">
+          <div class="sale-entry-hdr">Sale 1</div>
+          <div class="form-group"><label>Address</label><input type="text" id="f-s1-addr" placeholder="e.g. 8 Maple Street, Norwood SA 5067" required></div>
+          <div class="form-row quad">
+            <div class="form-group"><label>Beds</label><input type="number" id="f-s1-beds" min="0" max="20" placeholder="4" required></div>
+            <div class="form-group"><label>Baths</label><input type="number" id="f-s1-baths" min="0" max="20" placeholder="2" required></div>
+            <div class="form-group"><label>Cars</label><input type="number" id="f-s1-car" min="0" max="20" placeholder="2" required></div>
+            <div class="form-group"><label>Land</label><input type="text" id="f-s1-land" placeholder="580m²" required></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Sold Price</label><div class="currency-wrap"><input type="text" id="f-s1-price" placeholder="920,000" required></div></div>
+            <div class="form-group"><label>Sold Date</label><input type="date" id="f-s1-date" required></div>
+          </div>
+        </div>
+
+        <div class="sale-entry">
+          <div class="sale-entry-hdr">Sale 2</div>
+          <div class="form-group"><label>Address</label><input type="text" id="f-s2-addr" placeholder="e.g. 22 River Road, Norwood SA 5067" required></div>
+          <div class="form-row quad">
+            <div class="form-group"><label>Beds</label><input type="number" id="f-s2-beds" min="0" max="20" placeholder="4" required></div>
+            <div class="form-group"><label>Baths</label><input type="number" id="f-s2-baths" min="0" max="20" placeholder="2" required></div>
+            <div class="form-group"><label>Cars</label><input type="number" id="f-s2-car" min="0" max="20" placeholder="1" required></div>
+            <div class="form-group"><label>Land</label><input type="text" id="f-s2-land" placeholder="610m²" required></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Sold Price</label><div class="currency-wrap"><input type="text" id="f-s2-price" placeholder="905,000" required></div></div>
+            <div class="form-group"><label>Sold Date</label><input type="date" id="f-s2-date" required></div>
+          </div>
+        </div>
+
+        <div class="sale-entry">
+          <div class="sale-entry-hdr">Sale 3</div>
+          <div class="form-group"><label>Address</label><input type="text" id="f-s3-addr" placeholder="e.g. 5 Oak Avenue, Norwood SA 5067" required></div>
+          <div class="form-row quad">
+            <div class="form-group"><label>Beds</label><input type="number" id="f-s3-beds" min="0" max="20" placeholder="3" required></div>
+            <div class="form-group"><label>Baths</label><input type="number" id="f-s3-baths" min="0" max="20" placeholder="1" required></div>
+            <div class="form-group"><label>Cars</label><input type="number" id="f-s3-car" min="0" max="20" placeholder="2" required></div>
+            <div class="form-group"><label>Land</label><input type="text" id="f-s3-land" placeholder="490m²" required></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Sold Price</label><div class="currency-wrap"><input type="text" id="f-s3-price" placeholder="870,000" required></div></div>
+            <div class="form-group"><label>Sold Date</label><input type="date" id="f-s3-date" required></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 5: Commission -->
+      <div class="intake-step" id="step5">
+        <span class="intake-sec-lbl">Commission</span>
+        <div class="form-group"><label>Commission Rate</label><input type="text" id="f-comm-rate" placeholder="e.g. 2.5% inc. GST" required></div>
+        <div class="form-group">
+          <label>Additional Notes <span style="font-size:.85em;opacity:.5;text-transform:none">(optional)</span></label>
+          <textarea id="f-comm-note" rows="3" placeholder="e.g. Commission is payable only upon successful sale and settlement. No sale, no fee."></textarea>
+        </div>
+      </div>
+
+    </div><!-- /intake-body -->
+
+    <!-- Navigation -->
+    <div class="intake-footer">
+      <button class="btn-ib" id="btn-back" onclick="prevStep()" style="display:none">← Back</button>
+      <button class="btn-in" id="btn-next" onclick="nextStep()">Next →</button>
+      <button class="btn-ig" id="btn-gen" onclick="generateProposal()" style="display:none">Generate Proposal →</button>
+    </div>
+    <p class="intake-note" id="intake-note-txt">Step 1 of 5</p>
+
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <img src="http://eagle-host.s3-us-west-2.amazonaws.com/uploads/686f4023c7605457d14f63c1aeae541d/Logo_Willow Real Estate-20.png" alt="Willow Real Estate" style="height:38px;width:auto;object-fit:contain">
+  <div class="nav-sub">PROPERTY PROPOSAL</div>
+</nav>
+<div id="progress"></div>
+
+<!-- ===== S1: COVER / WELCOME ===== -->
+<section class="cover" id="s1">
+  <img class="cover-bg" src="https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?w=1800&q=80" alt="">
+  <div class="cover-overlay"></div>
+  <div class="cover-inner">
+    <p class="cover-tag">Prepared exclusively for</p>
+    <h1>Dear Mohit Sangwan,</h1>
+    <p class="cover-sub">
+      Thank you for inviting Willow Real Estate to present our proposal for the sale of your property.
+      We are honoured by the opportunity and fully committed to delivering an outstanding result for you.
+    </p>
+    <div class="cover-address">455 Magill Road, St Morris</div>
+    <div class="cover-meta">
+      <div class="cover-meta-item"><strong>Mohit Sangwan</strong>Listing Agent</div>
+      <div class="cover-meta-item"><strong>0425 412 807</strong>Direct Line</div>
+      <div class="cover-meta-item"><strong>27 May 2026</strong>Date Prepared</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== S2: THE WILLOW ADVANTAGE ===== -->
+<section id="s2">
+  <div class="adv-bg">
+    <div style="max-width:1280px;margin:0 auto;padding:0 80px">
+      <span class="sec-label">Why Choose Us</span>
+      <h2 class="sec-title">The Willow Advantage</h2>
+      <div class="divider"></div>
+      <p style="max-width:660px;font-size:1rem;color:#111">
+        At Willow Real Estate, we combine deep local knowledge with a modern, client-first approach to deliver
+        outstanding results for every vendor. We are not just selling a property — we are realising your goals.
+      </p>
+      <div class="adv-grid">
+        <div class="adv-card"><span class="adv-card-num">01</span><h3>Strategy Built for Your Home</h3><p>Every property is different. We craft a campaign built specifically around your home's strengths, the current market, and the buyers most likely to pay a premium for it.</p></div>
+        <div class="adv-card"><span class="adv-card-num">02</span><h3>Direct Access to the Director</h3><p>You deal directly with Mohit Sangwan at every step — from listing through to settlement. No handoffs, no juniors. Just one committed professional accountable for your result.</p></div>
+        <div class="adv-card"><span class="adv-card-num">03</span><h3>Transparent Communication</h3><p>You will never be left wondering. Regular written updates, after-inspection reports, and 24/7 availability ensure you are fully informed and in control throughout the entire journey.</p></div>
+        <div class="adv-card"><span class="adv-card-num">04</span><h3>Disciplined Buyer Management</h3><p>Every enquiry is followed up, every buyer is qualified, and every opportunity is leveraged. A clear and structured process ensures serious buyers are always converted into results.</p></div>
+        <div class="adv-card"><span class="adv-card-num">05</span><h3>Pricing to Attract Premium Buyers</h3><p>We position your property strategically — not just to sell, but to attract the right buyers willing to pay a premium. Our pricing approach is tailored, evidence-based, and outcome-driven.</p></div>
+        <div class="adv-card"><span class="adv-card-num">06</span><h3>Focused Campaign, Higher Engagement</h3><p>A smaller, more focused agency means your campaign gets undivided attention. Higher engagement from every buyer interaction translates directly into stronger competition and a better result.</p></div>
+      </div>
+      <div class="adv-stats" style="grid-template-columns:repeat(2,1fr);max-width:500px">
+        <div class="adv-stat"><span class="num">99%</span><span class="lbl">Client Satisfaction</span></div>
+        <div class="adv-stat"><span class="num">27</span><span class="lbl">Days on Market</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== S3: YOUR HOME ===== -->
+<section id="s3">
+  <!-- Full-bleed property hero -->
+  <div class="prop-hero">
+    <img src="http://eagle-host.s3-us-west-2.amazonaws.com/uploads/142c4a826643cdd5e715c4a712536ca4/2-1.jpg" alt="455 Magill Road, St Morris">
+  </div>
+  <div class="wrap">
+    <span class="sec-label">Property Overview</span>
+    <h2 class="sec-title">Your Home</h2>
+    <div class="divider"></div>
+    <!-- Specs row — full width -->
+    <div class="prop-specs" style="margin-bottom:44px">
+        <div class="spec-box"><span class="spec-lbl">Bedrooms</span><span class="spec-val">3</span></div>
+        <div class="spec-box"><span class="spec-lbl">Bathrooms</span><span class="spec-val">2</span></div>
+        <div class="spec-box"><span class="spec-lbl">Garage</span><span class="spec-val">2</span></div>
+        <div class="spec-box"><span class="spec-lbl">Land Size</span><span class="spec-val" style="font-size:1.1rem">455m²</span></div>
+    </div>
+    <div class="two-col">
+      <div>
+        <h3 style="font-size:1.3rem;color:var(--gd);margin-bottom:12px">Key Strengths</h3>
+        <div id="key-strengths-block">
+          <ul class="strength-list">
+            <li>Premium location on Magill Road</li>
+            <li>Recently renovated with quality finishes</li>
+            <li>Versatile 3-bedroom floor plan</li>
+            <li>Double garage with internal access</li>
+            <li>Close to Kensington & Norwood amenities</li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <h3 style="font-size:1.3rem;color:var(--gd);margin-bottom:12px">Buyer Pool</h3>
+        <p style="color:#111;font-size:.93rem;margin-bottom:16px">Based on this property's attributes, we anticipate strong interest from:</p>
+        <div id="buyer-pool-block">
+          <div class="buyer-tags">
+            <span class="buyer-tag">Owner Occupier</span>
+            <span class="buyer-tag">Upgrader</span>
+            <span class="buyer-tag">Downsizer</span>
+            <span class="buyer-tag">Professional Couple</span>
+            <span class="buyer-tag">Interstate Buyer</span>
+          </div>
+        </div>
+        <p style="color:var(--muted);font-size:.85rem;margin-top:20px;font-style:italic">St Morris consistently attracts buyers seeking the inner-east lifestyle — proximity to The Parade, Burnside Village, and quality schooling zones drives strong competition in this price bracket.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== COMPARABLE SALES (moved here after Your Home) ===== -->
+<section id="s-comp" style="background:var(--gray)">
+  <div class="wrap">
+    <span class="sec-label">Market Evidence</span>
+    <h2 class="sec-title">Recent Comparable Sales</h2>
+    <div class="divider"></div>
+    <p style="color:#111;max-width:640px">The following recent sales in your area provide clear, evidence-based context for current market value — helping us set a realistic and competitive price strategy for your property.</p>
+    <div class="sales-grid" id="salesGrid">
+
+      <div class="sale-card">
+        <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=600&q=80" alt="12 Glynburn Road" style="width:100%;height:220px;object-fit:cover;display:block">
+        <div class="sale-body">
+          <p class="sale-addr">12 Glynburn Road, Burnside</p>
+          <div style="margin:8px 0 12px"><span class="sale-spec-pill">3 Bed</span><span class="sale-spec-pill">2 Bath</span><span class="sale-spec-pill">2 Car</span><span class="sale-spec-pill">480m²</span></div>
+          <p class="sale-price">$1,050,000</p>
+          <p class="sale-date">Sold 15 March 2026</p>
+        </div>
+      </div>
+
+      <div class="sale-card">
+        <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&q=80" alt="7 Alexander Avenue" style="width:100%;height:220px;object-fit:cover;display:block">
+        <div class="sale-body">
+          <p class="sale-addr">7 Alexander Avenue, Kensington</p>
+          <div style="margin:8px 0 12px"><span class="sale-spec-pill">3 Bed</span><span class="sale-spec-pill">1 Bath</span><span class="sale-spec-pill">1 Car</span><span class="sale-spec-pill">420m²</span></div>
+          <p class="sale-price">$985,000</p>
+          <p class="sale-date">Sold 2 April 2026</p>
+        </div>
+      </div>
+
+      <div class="sale-card">
+        <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=600&q=80" alt="22 Portrush Road" style="width:100%;height:220px;object-fit:cover;display:block">
+        <div class="sale-body">
+          <p class="sale-addr">22 Portrush Road, Evandale</p>
+          <div style="margin:8px 0 12px"><span class="sale-spec-pill">4 Bed</span><span class="sale-spec-pill">2 Bath</span><span class="sale-spec-pill">2 Car</span><span class="sale-spec-pill">512m²</span></div>
+          <p class="sale-price">$1,120,000</p>
+          <p class="sale-date">Sold 8 May 2026</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRICE ESTIMATE ===== -->
+<section id="s-estimate" style="background:var(--gd)">
+  <div class="wrap">
+    <span class="sec-label" style="color:rgba(255,255,255,.4)">Our Assessment</span>
+    <h2 class="sec-title" style="color:#fff">Estimated Sale Price</h2>
+    <div class="divider" style="background:var(--gold)"></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start">
+      <div>
+        <p style="font-family:var(--sans);font-size:.65rem;letter-spacing:.32em;text-transform:uppercase;color:rgba(255,255,255,.38);margin-bottom:18px">Indicative Price Range</p>
+        <div class="est-range">$1,000,000<br>— $1,075,000</div>
+        <p style="font-family:var(--sans);font-size:.8rem;color:rgba(255,255,255,.45);margin-top:14px;line-height:1.6">Based on comparable sales evidence<br>Inner-east Adelaide · May 2026</p>
+        <div style="display:flex;gap:28px;margin-top:36px;padding-top:28px;border-top:1px solid rgba(255,255,255,.1)">
+          <div>
+            <span style="display:block;font-family:var(--serif);font-size:2rem;color:var(--gold);line-height:1">3</span>
+            <span style="font-family:var(--sans);font-size:.68rem;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.4)">Sales Analysed</span>
+          </div>
+          <div>
+            <span style="display:block;font-family:var(--serif);font-size:2rem;color:var(--gold);line-height:1">90<span style="font-size:1.1rem">d</span></span>
+            <span style="font-family:var(--sans);font-size:.68rem;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.4)">Recency Window</span>
+          </div>
+          <div>
+            <span style="display:block;font-family:var(--serif);font-size:2rem;color:var(--gold);line-height:1">~455<span style="font-size:1rem">m²</span></span>
+            <span style="font-family:var(--sans);font-size:.68rem;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.4)">Avg. Land Compared</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h3 style="font-size:1.5rem;color:#fff;margin-bottom:18px">How We Arrive at This Estimate</h3>
+        <p style="color:rgba(255,255,255,.82);font-size:.95rem;line-height:1.85">Our estimate is built on a careful analysis of the three comparable sales above, adjusted for differences in configuration, land size, and location relative to 455 Magill Road, St Morris.</p>
+        <p style="color:rgba(255,255,255,.82);font-size:.95rem;line-height:1.85">The most directly comparable — 12 Glynburn Road, Burnside — achieved $1,050,000 in March 2026 with an identical 3-bed, 2-bath, 2-car configuration on a similar land parcel. Your property's premium address on Magill Road and its updated presentation support pricing at the upper end of this range. The broader data corridor — from $985,000 to $1,120,000 — reflects the spread of configurations, and your property sits well within the stronger end of that cohort.</p>
+        <p style="color:rgba(255,255,255,.82);font-size:.95rem;line-height:1.85">We also factor in the current upward movement in inner-east Adelaide values, which has averaged approximately 6% year-on-year across comparable postcodes. Demand for well-located, move-in ready homes in this corridor remains strong.</p>
+        <p style="color:rgba(255,255,255,.38);font-size:.82rem;font-style:italic;margin-top:6px">This estimate is indicative only. Your reserve price will be set collaboratively with you in the lead-up to auction, informed by actual campaign feedback.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== S4: METHOD OF SALE ===== -->
+<section id="s4" style="background:var(--gray)">
+  <div class="wrap">
+    <span class="sec-label">Selling Strategy</span>
+    <h2 class="sec-title">Method of Sale</h2>
+    <div class="divider"></div>
+    <div class="tabs">
+      <div class="tab-nav">
+        <button class="tab-btn active" onclick="tab(event,'mos','auction')">Auction</button>
+        <button class="tab-btn" onclick="tab(event,'mos','private')">Private Sale</button>
+        <button class="tab-btn" onclick="tab(event,'mos','best')">Best Offers by Date</button>
+        <button class="tab-btn" onclick="tab(event,'mos','eoi')">EOI</button>
+      </div>
+      <div id="mos-auction" class="tab-pane active">
+        <h3>Auction</h3>
+        <p>Auction is the most powerful method for maximising sale price in a competitive market. It creates a transparent, emotionally-charged environment where multiple buyers compete openly — removing the ceiling on price and placing all negotiating power firmly in your hands. On auction day, the hammer falls on an unconditional contract, giving you absolute certainty of sale without delay.</p>
+        <p>For a property like yours on Magill Road, with broad buyer appeal across owner-occupiers, upgraders, and investors, auction is the ideal method. It compresses urgency, forces decisions, and consistently outperforms private sale in competitive inner-east markets. Willow's structured lead-up — including intensive buyer follow-up in the final two weeks and a collaborative reserve price meeting — ensures you are positioned for the strongest possible result on the day.</p>
+        <ul>
+          <li>Unconditional sale at the fall of the hammer — no finance or B&amp;P clauses</li>
+          <li>No ceiling on price — buyers determine value through open competition</li>
+          <li>Vendor controls the reserve — you accept nothing below your minimum</li>
+          <li>Strong buyer urgency created by the fixed auction date</li>
+          <li>Willow conducts a full reserve consultation in the week prior to auction</li>
+          <li>Post-auction negotiation available if property passes in</li>
+        </ul>
+      </div>
+      <div id="mos-private" class="tab-pane">
+        <h3>Private Sale</h3>
+        <p>A private sale (private treaty) allows buyers to submit offers at any time throughout the campaign. There is no fixed deadline — the campaign runs until the right offer is received and accepted. This method suits vendors who prefer a less pressured timeline, or properties where the buyer pool is more selective and may require additional time to arrange finance or conduct due diligence.</p>
+        <p>Negotiation under private sale is managed confidentially by your agent. We present all offers in writing, walk you through every term, and provide professional guidance on how to respond — whether that is acceptance, counter-offer, or rejection. You remain in complete control at every step.</p>
+        <ul>
+          <li>Flexible duration — campaign continues until the right offer arrives</li>
+          <li>Buyers may include finance and building inspection conditions</li>
+          <li>Cooling-off period of 2 business days applies in South Australia</li>
+          <li>Negotiation managed privately — buyers do not know each other's position</li>
+          <li>Well-suited to unique properties or slower-paced market segments</li>
+          <li>Vendor can accept, reject, or counter any offer received</li>
+        </ul>
+      </div>
+      <div id="mos-best" class="tab-pane">
+        <h3>Best Offers by Date</h3>
+        <p>Best Offers by Date merges the urgency of a deadline with the flexibility of private treaty. All interested buyers are asked to submit their best and final offer by a specific date and time — creating genuine competition without the formality or emotion of a public auction. This method works particularly well where multiple buyers are interested but one or more may prefer to avoid auction pressure.</p>
+        <p>Once the deadline passes, we present all offers to you simultaneously. You review each offer on its merits — price, deposit, conditions, and settlement terms — and choose the outcome that best serves your goals. You are under no obligation to accept any offer received.</p>
+        <ul>
+          <li>Fixed deadline creates urgency and prompts buyers to act</li>
+          <li>All offers received simultaneously — prevents progressive counter-bidding</li>
+          <li>Conditions such as finance and B&amp;P may be included by buyers</li>
+          <li>Vendor selects the best overall offer, not just the highest price</li>
+          <li>Less confrontational atmosphere — suits vendors preferring a quieter process</li>
+          <li>Can be combined with private sale if the deadline produces no acceptable offers</li>
+        </ul>
+      </div>
+      <div id="mos-eoi" class="tab-pane">
+        <h3>Expression of Interest (EOI)</h3>
+        <p>An Expression of Interest campaign invites serious buyers to submit a written proposal detailing their offered price, conditions, deposit amount, and preferred settlement date. EOI is most appropriate for prestige properties, development sites, or properties with a highly specific buyer profile that requires more time and deliberation before committing.</p>
+        <p>The EOI process is more formal and deliberate than a standard private sale. Interested parties are given a set period — typically four to six weeks — to conduct their due diligence before submitting a sealed bid. This filters out casual enquiry and attracts only the most motivated, well-prepared buyers.</p>
+        <ul>
+          <li>Suited to premium, prestige, or complex properties requiring deep buyer research</li>
+          <li>Sealed bids ensure buyer confidentiality and encourage genuine best offers</li>
+          <li>Allows bespoke settlement dates and flexible terms tailored to your needs</li>
+          <li>Vendor has complete discretion — no obligation to accept any offer</li>
+          <li>Can accommodate multiple rounds of negotiation with shortlisted buyers</li>
+          <li>Typically run over a longer 4–6 week campaign period</li>
+        </ul>
+      </div>
+    </div>
+    <div class="rec-box">
+      <h4>Our Recommended Method of Sale</h4>
+      <div class="rec-box-method">Auction</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== S5: WHAT TO EXPECT ===== -->
+<section id="s5">
+  <div class="wrap">
+    <span class="sec-label">Our Process</span>
+    <h2 class="sec-title">What to Expect</h2>
+    <div class="divider"></div>
+    <div class="tabs">
+      <div class="tab-nav">
+        <button class="tab-btn active" onclick="tab(event,'wte','open')">Open House Inspections</button>
+        <button class="tab-btn" onclick="tab(event,'wte','buyers')">Buyer Management</button>
+        <button class="tab-btn" onclick="tab(event,'wte','offers')">Offers</button>
+        <button class="tab-btn" onclick="tab(event,'wte','leadup')">Auction Lead Up</button>
+        <button class="tab-btn" onclick="tab(event,'wte','neg')">Negotiation</button>
+      </div>
+      <div id="wte-open" class="tab-pane active">
+        <div class="mkt-pane" style="gap:40px;align-items:stretch">
+          <div style="position:relative;min-height:300px;border-radius:8px;overflow:hidden;flex-shrink:0">
+            <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=700&q=80" alt="Open House" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+          </div>
+          <div>
+            <h3>Open House Inspections</h3>
+            <p>We conduct professionally managed open inspections, typically on Saturdays and Wednesdays throughout the campaign. Every open inspection is personally attended by Mohit — not a junior agent — so every buyer is greeted with authority, expertise, and genuine relationship-building intent.</p>
+            <p>Prior to each inspection, we provide a preparation checklist and conduct a pre-inspection walkthrough to ensure your home is staged, lit, and presented in its absolute best light. First impressions shape price expectations, and we take this seriously.</p>
+            <p>After every inspection, you will receive a written feedback summary: number of groups through, interest levels, any specific buyer comments, and our recommended next steps. Private inspections are arranged promptly for serious buyers who cannot attend scheduled opens — no opportunity is ever left unpursued.</p>
+          </div>
+        </div>
+      </div>
+      <div id="wte-buyers" class="tab-pane">
+        <div class="mkt-pane" style="gap:40px;align-items:stretch">
+          <div style="position:relative;min-height:300px;border-radius:8px;overflow:hidden;flex-shrink:0">
+            <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=700&q=80" alt="Buyer Management" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+          </div>
+          <div>
+            <h3>Buyer Management</h3>
+            <p>Every enquiry — whether by phone, email, or portal — is followed up within 24 hours. We qualify buyers early, understanding their motivation, financial capacity, and decision timeline. This knowledge is invaluable at negotiation time, when knowing who is truly committed makes all the difference.</p>
+            <p>From the moment your property is listed, we match it against our active buyer database and contact all relevant prospects directly. This pre-market exposure frequently generates genuine interest and private inspection requests before the first open house has even taken place — a significant competitive advantage.</p>
+            <p>Throughout the campaign we maintain a structured buyer register, tracking every enquiry, inspection attendance, and follow-up conversation. You will always know who is engaged, how seriously, and what it will take to convert them into a sale.</p>
+          </div>
+        </div>
+      </div>
+      <div id="wte-offers" class="tab-pane">
+        <div class="mkt-pane" style="gap:40px;align-items:stretch">
+          <div style="position:relative;min-height:300px;border-radius:8px;overflow:hidden;flex-shrink:0">
+            <img src="https://images.unsplash.com/photo-1600210492493-0946911123ea?w=700&q=80" alt="Offers" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+          </div>
+          <div>
+            <h3>Offers &amp; Contracts</h3>
+            <p>All offers are submitted in writing and presented to you promptly and in full. We walk you through every term — offered price, deposit amount, conditions (if any), settlement date, and any special conditions — ensuring you fully understand your options before making any decision.</p>
+            <p>We never pressure you into accepting an offer that does not meet your expectations. Our role is to present all facts clearly, give you our professional recommendation, and act exclusively in your best interests. If an offer falls short, we tell you exactly why — and what strategy we recommend to improve it.</p>
+            <p>Where multiple offers are received, we manage the process strategically to maximise competition and outcome. Once an offer is accepted, we coordinate with your solicitor to ensure contracts are prepared, executed, and exchanged promptly so the deal doesn't fall over on a technicality.</p>
+          </div>
+        </div>
+      </div>
+      <div id="wte-leadup" class="tab-pane">
+        <div class="mkt-pane" style="gap:40px;align-items:stretch">
+          <div style="position:relative;min-height:300px;border-radius:8px;overflow:hidden;flex-shrink:0">
+            <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=700&q=80" alt="Auction Lead Up" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+          </div>
+          <div>
+            <h3>Auction Lead-Up</h3>
+            <p>The final two weeks before auction are the most critical phase of the campaign. We shift into high-intensity buyer management mode — personally calling every registered and prospective bidder to gauge commitment, resolve any remaining concerns, and confirm their intent to attend and bid.</p>
+            <p>In the week prior to auction, we schedule a dedicated vendor meeting to discuss your reserve price. This conversation is grounded in real buyer feedback, current market comparisons, and a clear view of who we expect to bid and at what level. You will never walk into auction day uninformed or unprepared.</p>
+            <p>We also prepare you for the auction experience itself: what to expect from the auctioneer, how bidding typically progresses, when and how the reserve is announced, and what happens if the property passes in. Confidence on the day comes from preparation in the days before.</p>
+          </div>
+        </div>
+      </div>
+      <div id="wte-neg" class="tab-pane">
+        <div class="mkt-pane" style="gap:40px;align-items:stretch">
+          <div style="position:relative;min-height:300px;border-radius:8px;overflow:hidden;flex-shrink:0">
+            <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=700&q=80" alt="Negotiation" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+          </div>
+          <div>
+            <h3>Negotiation</h3>
+            <p>Skilled negotiation is where great agents earn their fee — and where average agents lose their clients thousands. Our approach is principled, strategic, and always disciplined. We never reveal your position, never show desperation, and never negotiate against ourselves.</p>
+            <p>We create competition wherever it exists, leverage genuine interest without alienating buyers, and use every legitimate tool available — timing, transparency, silence, and counter-strategy — to maximise your result. Every negotiation is different, and we adapt our approach to the specific dynamics of each buyer and each situation.</p>
+            <p>If the property passes in at auction, we immediately transition into direct negotiation with the highest bidder, using the energy and urgency of auction day to our advantage. Our goal is always the best possible price, on the best possible terms, in the shortest possible time.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Image band 2 -->
+<div class="img-band">
+  <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1800&q=80" alt="" style="height:380px;object-position:center 40%">
+  <div class="ib-ovl" style="background:rgba(28,22,14,.28)"></div>
+</div>
+
+<!-- ===== S6: MARKETING ===== -->
+<section id="s6" style="background:var(--cream)">
+  <div class="wrap">
+    <span class="sec-label">Campaign Strategy</span>
+    <h2 class="sec-title">Marketing Your Property</h2>
+    <div class="divider"></div>
+    <div class="tabs">
+      <div class="tab-nav">
+        <button class="tab-btn active" onclick="tab(event,'mkt','online')">Online</button>
+        <button class="tab-btn" onclick="tab(event,'mkt','internal')">Internal</button>
+        <button class="tab-btn" onclick="tab(event,'mkt','social')">Social Media</button>
+        <button class="tab-btn" onclick="tab(event,'mkt','photos')">Photos</button>
+        <button class="tab-btn" onclick="tab(event,'mkt','sign')">Signboard</button>
+      </div>
+      <div id="mkt-online" class="tab-pane active">
+        <div class="mkt-pane" style="gap:36px;align-items:start">
+          <div>
+            <h3>Online Advertising</h3>
+            <p>Your property will be listed with a <strong>Premier listing on realestate.com.au</strong> and a <strong>Highlight listing on domain.com.au</strong> — Australia's two largest property portals. Premium placements feature front-page positioning in search results, larger photo carousels, and priority display — consistently generating 3–5× more views and enquiries than standard listings.</p>
+            <p>We monitor your listing's performance daily — tracking views, enquiry rates, and save counts. Where engagement is lower than expected, we act quickly: refreshing photography, updating the listing headline, or adjusting the price strategy. You will receive weekly portal performance reports throughout the campaign.</p>
+            <p>For your property, we recommend leading with strong lifestyle photography and a compelling headline that speaks directly to the buyer profile most likely to pay a premium — professional couples and inner-east upgraders seeking quality and location.</p>
+          </div>
+          <div><img src="http://eagle-host.s3-us-west-2.amazonaws.com/uploads/b6a628dc3fc759ddf10887b0b5eb6d39/Picture (65).png" alt="Online Marketing" style="width:100%;min-height:240px;object-fit:cover;border-radius:8px;display:block"></div>
+        </div>
+      </div>
+      <div id="mkt-internal" class="tab-pane">
+        <div class="mkt-pane" style="gap:36px;align-items:start">
+          <div>
+            <h3>Internal Database Marketing</h3>
+            <p>The moment your agency agreement is signed, your property is matched against our active buyer database. We immediately reach out to all relevant, pre-qualified prospects by phone and email — introducing your property before it appears publicly anywhere. This pre-market exposure is one of the most undervalued advantages a boutique, director-led agency can offer.</p>
+            <p>Our database contains buyers who have previously enquired, inspected, or been registered as active in the inner-east and surrounding suburbs. These are not cold leads — they are people who told us exactly what they are looking for and when. The ability to match your home directly to their brief and call them personally is something no portal algorithm can replicate.</p>
+            <p>Historically, pre-market buyer contact generates first enquiries and private inspection requests within the first 48–72 hours of listing — well before the first open house. This early momentum is valuable for creating urgency and social proof among the broader buyer pool.</p>
+          </div>
+          <div><img src="http://eagle-host.s3-us-west-2.amazonaws.com/uploads/72f8cade9f65755832861de894b6a66e/Picture (69).png" alt="Internal Database Marketing" style="width:100%;min-height:240px;object-fit:cover;border-radius:8px;display:block"></div>
+        </div>
+      </div>
+      <div id="mkt-social" class="tab-pane">
+        <div class="mkt-pane" style="gap:36px;align-items:start">
+          <div>
+            <h3>Social Media</h3>
+            <p>Your property will be promoted across <strong>Facebook</strong> and <strong>Instagram</strong> with a combination of targeted paid advertising and organic content. Paid campaigns are configured to reach buyers by age, household income, location (within key driving suburbs), and property interest signals — ensuring your listing is seen by exactly the right people, not just anyone scrolling by.</p>
+            <p>We create bespoke content for your property: professionally edited video walkthroughs, short-form Reels for Instagram, and lifestyle-focused static posts that emphasise the feeling of living in the home. Social media increasingly drives discovery — many buyers see a property on Instagram before they find it on a portal. Being there first, with compelling content, gives us a real advantage.</p>
+            <p>Every paid campaign is monitored in real time. Underperforming ads are paused and replaced. Successful formats are scaled. You get the benefit of an active, optimised presence throughout the campaign at no additional charge.</p>
+          </div>
+          <div><img src="http://eagle-host.s3-us-west-2.amazonaws.com/uploads/bba386154e6d2dd1aa2f9b168d68d37c/Picture (66).png" alt="Social Media" style="width:100%;min-height:240px;object-fit:cover;border-radius:8px;display:block"></div>
+        </div>
+      </div>
+      <div id="mkt-photos" class="tab-pane">
+        <div class="mkt-pane" style="gap:36px;align-items:start">
+          <div>
+            <h3>Professional Photography</h3>
+            <p>Every Willow listing is photographed by an experienced real estate photographer who understands not just composition, but buyer psychology. The goal is not simply to show the property — it is to make buyers emotionally connect with it before they set foot inside.</p>
+            <p>Our standard package for 455 Magill Road includes a full set of wide-angle interior photography, exterior front and rear shots, a detailed digital floor plan, and twilight photography of the façade — which consistently improves online engagement by presenting the home in a warm, aspirational light.</p>
+            <p>For properties where it adds tangible value, we also offer drone aerial photography and video walk-through tours. These are particularly effective for showcasing land context, streetscape, and proximity to local amenities — all of which matter to the buyers who will be most competitive for your home.</p>
+          </div>
+          <div><img src="http://eagle-host.s3-us-west-2.amazonaws.com/uploads/628b7ded8f6fa1e9e05c7b4b460ce2fe/Picture (67).png" alt="Photography" style="width:100%;min-height:240px;object-fit:cover;border-radius:8px;display:block"></div>
+        </div>
+      </div>
+      <div id="mkt-sign" class="tab-pane">
+        <div class="mkt-pane" style="gap:36px;align-items:start">
+          <div>
+            <h3>Signboard</h3>
+            <p>A professionally produced <strong>Willow Real Estate signboard</strong> will be installed on your property for the full duration of the campaign. Despite the rise of digital marketing, signboards remain one of the most consistently effective advertising tools in residential real estate — particularly in high-traffic corridors like Magill Road.</p>
+            <p>Buyers actively looking in a suburb regularly drive its streets. Seeing your signboard triggers immediate action: an on-the-spot enquiry call, a quick portal search, or a text to a friend or family member looking in the area. This type of word-of-mouth referral is organic, highly credible, and costs you nothing beyond the initial install.</p>
+            <p>Our signboards feature a full-panel property photograph, clear Willow branding, and contact details. They signal quality, professionalism, and active management — all of which contribute to positive buyer perception before a single inspection has taken place.</p>
+          </div>
+          <div><img src="http://eagle-host.s3-us-west-2.amazonaws.com/uploads/98e256e4a415e51e4749ea928cce5d7c/Picture (68).png" alt="Signboard" style="width:100%;min-height:240px;object-fit:cover;border-radius:8px;display:block"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== S7: MARKETING INVESTMENT ===== -->
+<section id="s7">
+  <div class="wrap">
+    <span class="sec-label">Campaign Costs</span>
+    <h2 class="sec-title">Marketing Investment</h2>
+    <div class="divider"></div>
+    <p style="color:#111;max-width:640px">Investing in quality marketing is one of the best decisions a vendor can make — it attracts more buyers, creates more competition, and typically delivers a higher sale price. The following package has been prepared specifically for your property.</p>
+    <table class="cost-tbl">
+      <thead><tr><th>Item</th><th>Description</th><th>Cost</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Advertising</strong></td><td>Premium on realestate.com.au and domain.com.au</td><td>$2,500</td></tr>
+        <tr><td><strong>Signboard</strong></td><td>8x4 wrapped board</td><td>$250</td></tr>
+        <tr><td><strong>Brochures</strong></td><td>A4 gloss double sided</td><td>$90</td></tr>
+        <tr><td><strong>DL Flyers</strong></td><td>Double sided x 50</td><td>$40</td></tr>
+        <tr class="total"><td colspan="2"><strong>Total Marketing Investment</strong></td><td><strong>$2,880</strong></td></tr>
+      </tbody>
+    </table>
+    <p class="cost-note">* All prices inclusive of GST. Marketing investment is payable upon listing or deducted from sale proceeds as agreed in the agency agreement.</p>
+  </div>
+</section>
+
+<!-- ===== S8: MARKETING CALENDAR ===== -->
+<section id="s8" style="background:var(--cream)">
+  <div class="wrap">
+    <span class="sec-label">Campaign Timeline</span>
+    <h2 class="sec-title">Marketing Calendar</h2>
+    <div class="divider"></div>
+    <p style="color:#111;max-width:640px">A structured, well-executed campaign is key to achieving the best result. Below is a typical 4-week campaign — your specific dates will be confirmed at listing.</p>
+
+    <style>
+    .campaign-cal{margin-top:40px;overflow-x:auto}
+    .cal-table{width:100%;border-collapse:separate;border-spacing:3px}
+    .cal-table th{font-family:var(--sans);font-size:.65rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);padding:7px 6px;text-align:center;font-weight:600}
+    .cal-week-hdr{background:var(--gd);color:var(--white);border-radius:6px;padding:10px 14px;text-align:left;vertical-align:top;min-width:120px}
+    .cal-week-hdr .wk-phase{font-family:var(--sans);font-size:.58rem;text-transform:uppercase;letter-spacing:.12em;color:var(--gold);display:block;margin-bottom:3px}
+    .cal-week-hdr .wk-title{font-family:var(--serif);font-size:.88rem;color:var(--white);font-weight:400;line-height:1.3}
+    .cal-cell{background:var(--gray);border-radius:5px;padding:8px 7px;vertical-align:top;text-align:center;width:calc(86%/7);min-height:72px;position:relative}
+    .cal-cell.has-event{background:var(--white);border:1px solid var(--border)}
+    .cal-cell.is-open{background:var(--gold)}
+    .cal-cell.is-launch{background:var(--gd)}
+    .cal-cell.is-auction{background:var(--gd);border:2px solid var(--gold)}
+    .cal-cell .day-num{font-family:var(--sans);font-size:.6rem;color:var(--muted);display:block;margin-bottom:4px}
+    .cal-cell.is-open .day-num{color:rgba(0,0,0,.45)}
+    .cal-cell.is-launch .day-num,.cal-cell.is-auction .day-num{color:rgba(255,255,255,.55)}
+    .cal-evt{font-family:var(--sans);font-size:.62rem;color:var(--gm);line-height:1.4;display:block;font-weight:600}
+    .cal-cell.is-open .cal-evt{color:var(--charcoal)}
+    .cal-cell.is-launch .cal-evt,.cal-cell.is-auction .cal-evt{color:var(--gold)}
+    </style>
+
+    <div class="campaign-cal">
+      <table class="cal-table">
+        <thead>
+          <tr>
+            <th style="width:14%;text-align:left;padding-left:4px">Phase</th>
+            <th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th><th>Sun</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- PRE-LAUNCH -->
+          <tr>
+            <td class="cal-week-hdr"><span class="wk-phase">Week 0</span><span class="wk-title">Pre-Launch</span></td>
+            <td class="cal-cell has-event"><span class="day-num">Day 1</span><span class="cal-evt">Listing Signed</span></td>
+            <td class="cal-cell has-event"><span class="day-num">Day 2</span><span class="cal-evt">Photography</span></td>
+            <td class="cal-cell has-event"><span class="day-num">Day 3</span><span class="cal-evt">Floorplan &amp; Copy</span></td>
+            <td class="cal-cell has-event"><span class="day-num">Day 4</span><span class="cal-evt">Signboard Installed</span></td>
+            <td class="cal-cell is-launch"><span class="day-num">Day 5</span><span class="cal-evt">Portals Go Live + Database</span></td>
+            <td class="cal-cell has-event"><span class="day-num">Day 6</span><span class="cal-evt">Social Media Launch</span></td>
+            <td class="cal-cell"></td>
+          </tr>
+          <!-- WEEK 1 -->
+          <tr>
+            <td class="cal-week-hdr"><span class="wk-phase">Week 1</span><span class="wk-title">Launch &amp; Momentum</span></td>
+            <td class="cal-cell has-event"><span class="day-num">Day 8</span><span class="cal-evt">Buyer Follow-Up Calls</span></td>
+            <td class="cal-cell"></td>
+            <td class="cal-cell has-event"><span class="day-num">Day 10</span><span class="cal-evt">Midweek Inspection</span></td>
+            <td class="cal-cell has-event"><span class="day-num">Day 11</span><span class="cal-evt">Feedback Report to Vendor</span></td>
+            <td class="cal-cell"></td>
+            <td class="cal-cell is-open"><span class="day-num">Day 13</span><span class="cal-evt">1st Open Inspection</span></td>
+            <td class="cal-cell"></td>
+          </tr>
+          <!-- WEEK 2 -->
+          <tr>
+            <td class="cal-week-hdr"><span class="wk-phase">Week 2</span><span class="wk-title">Build Competition</span></td>
+            <td class="cal-cell has-event"><span class="day-num">Day 15</span><span class="cal-evt">Mail Card Drop</span></td>
+            <td class="cal-cell has-event"><span class="day-num">Day 16</span><span class="cal-evt">Buyer Follow-Up Calls</span></td>
+            <td class="cal-cell has-event"><span class="day-num">Day 17</span><span class="cal-evt">Midweek Inspection</span></td>
+            <td class="cal-cell has-event"><span class="day-num">Day 18</span><span class="cal-evt">Feedback Report to Vendor</span></td>
+            <td class="cal-cell"></td>
+            <td class="cal-cell is-open"><span class="day-num">Day 20</span><span class="cal-evt">2nd Open Inspection</span></td>
+            <td class="cal-cell"></td>
+          </tr>
+          <!-- WEEK 3 -->
+          <tr>
+            <td class="cal-week-hdr"><span class="wk-phase">Week 3</span><span class="wk-title">Critical Phase</span></td>
+            <td class="cal-cell has-event"><span class="day-num">Day 22</span><span class="cal-evt">Reserve Price Consultation</span></td>
+            <td class="cal-cell has-event"><span class="day-num">Day 23</span><span class="cal-evt">Pre-Auction Offers Reviewed</span></td>
+            <td class="cal-cell has-event"><span class="day-num">Day 24</span><span class="cal-evt">Midweek Inspection</span></td>
+            <td class="cal-cell has-event"><span class="day-num">Day 25</span><span class="cal-evt">Bidder Registration Opens</span></td>
+            <td class="cal-cell has-event"><span class="day-num">Day 26</span><span class="cal-evt">Final Buyer Calls</span></td>
+            <td class="cal-cell is-open"><span class="day-num">Day 27</span><span class="cal-evt">3rd Open Inspection</span></td>
+            <td class="cal-cell"></td>
+          </tr>
+          <!-- AUCTION -->
+          <tr>
+            <td class="cal-week-hdr" style="background:var(--gold)"><span class="wk-phase" style="color:rgba(40,32,24,.6)">Week 4</span><span class="wk-title" style="color:var(--charcoal)">Sale Day</span></td>
+            <td class="cal-cell"></td>
+            <td class="cal-cell"></td>
+            <td class="cal-cell"></td>
+            <td class="cal-cell"></td>
+            <td class="cal-cell"></td>
+            <td class="cal-cell is-auction" style="border-radius:5px"><span class="day-num">Day 34</span><span class="cal-evt" style="font-size:.7rem">🏆 AUCTION DAY</span></td>
+            <td class="cal-cell"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="display:flex;gap:20px;flex-wrap:wrap;margin-top:20px">
+      <div style="display:flex;align-items:center;gap:8px"><div style="width:14px;height:14px;background:var(--gold);border-radius:3px"></div><span style="font-family:var(--sans);font-size:.75rem;color:var(--muted)">Open Inspection</span></div>
+      <div style="display:flex;align-items:center;gap:8px"><div style="width:14px;height:14px;background:var(--gd);border-radius:3px"></div><span style="font-family:var(--sans);font-size:.75rem;color:var(--muted)">Key Milestone</span></div>
+      <div style="display:flex;align-items:center;gap:8px"><div style="width:14px;height:14px;background:var(--white);border:1px solid var(--border);border-radius:3px"></div><span style="font-family:var(--sans);font-size:.75rem;color:var(--muted)">Scheduled Activity</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== S10: TESTIMONIALS ===== -->
+<section id="s10" class="test-bg">
+  <div style="max-width:1280px;margin:0 auto;padding:0 80px">
+    <span class="sec-label" style="color:var(--gold)">What Our Clients Say</span>
+    <h2 class="sec-title" style="color:var(--white)">Testimonials</h2>
+    <div class="divider"></div>
+    <p class="test-featured">
+      <span class="test-featured-mark">&ldquo;</span>
+      Within a week our property was online, we got our first offer above what we expected — and ended up getting more than what we thought.
+      <span class="test-featured-mark">&rdquo;</span>
+      <span class="test-featured-attr">— M Clark &nbsp;·&nbsp; Seller, Munno Para</span>
+    </p>
+
+    <div class="test-carousel-wrap" id="testCarousel">
+      <div class="test-track" id="testTrack">
+
+        <div class="test-card">
+          <div class="stars">★★★★★</div>
+          <p class="test-text">"After being with another agent for three months, we were really stressed because we had already bought another home. Then we contacted Mohit, and from the start he was very responsive and easy to deal with. Within a week our property was online, and we got our first offer above what we expected. We ended up getting more than what we thought and are so happy with the result. Definitely recommending Mohit to family and friends!"</p>
+          <p class="test-author">— M Clark, Seller &middot; Munno Para</p>
+        </div>
+
+        <div class="test-card">
+          <div class="stars">★★★★★</div>
+          <p class="test-text">"Very pleased with Willow Real Estate's professionalism and dedication to get the best outcome for the sale of our property. Mohit went above and beyond by assisting with organising repairs, contacting tenants, and in the end achieving a great sale price. Would highly recommend Willow Real Estate to anyone looking to buy or sell property."</p>
+          <p class="test-author">— Brad Peters, Seller &middot; Elizabeth South</p>
+        </div>
+
+        <div class="test-card">
+          <div class="stars">★★★★★</div>
+          <p class="test-text">"I would like to express my sincere appreciation to the team at Willow Real Estate for their exceptional work in handling the sale of my property. From our very first meeting, it was clear that I was in capable hands. What stood out most, aside from the remarkably fast sale, was just how incredibly helpful the entire agency was. They went above and beyond to guide me through every step of the transaction, proactively addressing my concerns and ensuring that no detail was overlooked."</p>
+          <p class="test-author">— D Lyn, Seller &middot; Elizabeth South</p>
+        </div>
+
+        <div class="test-card">
+          <div class="stars">★★★★★</div>
+          <p class="test-text">"We couldn't be more happier with the job Mohit did selling our home. Professional, responsive, and strategic from start to finish. Our house sold quickly and the entire process was seamless."</p>
+          <p class="test-author">— S Kumar, Seller &middot; Campbelltown</p>
+        </div>
+
+      </div>
+    </div>
+    <div class="test-nav">
+      <button class="test-arrow" onclick="testSlide(-1)">&#8592;</button>
+      <div class="test-dots" id="testDots"></div>
+      <button class="test-arrow" onclick="testSlide(1)">&#8594;</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== S11: AGENT PROFILE ===== -->
+<section id="s11">
+  <div class="wrap">
+    <span class="sec-label">Your Agent</span>
+    <h2 class="sec-title">Agent Profile</h2>
+    <div class="divider"></div>
+    <div class="agent-layout">
+      <div class="agent-left-col">
+        <img src="http://eagle-host.s3-us-west-2.amazonaws.com/uploads/28635587a3136b08176a608e6841c5b0/IMG_7933 (2).JPG" alt="Mohit Sangwan" style="width:100%;flex:1;min-height:320px;object-fit:cover;object-position:top center;border-radius:10px 10px 0 0;display:block;flex-shrink:0">
+        <div class="agent-contact-box" style="border-radius:0 0 10px 10px;margin-top:0;padding:22px 22px 24px">
+          <span class="agent-contact-lbl">Direct Contact</span>
+          <p class="agent-contact-item" style="font-size:1rem;margin-bottom:6px">0425 412 807</p>
+          <p class="agent-contact-item" style="margin-bottom:14px">m.sangwan@willowrealestate.com.au</p>
+          <div style="border-top:1px solid rgba(255,255,255,.1);padding-top:14px;display:flex;gap:24px">
+            <div>
+              <span style="display:block;font-family:var(--serif);font-size:1.6rem;color:var(--gold);line-height:1">9</span>
+              <span style="font-family:var(--sans);font-size:.65rem;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.4)">Years Active</span>
+            </div>
+            <div>
+              <span style="display:block;font-family:var(--serif);font-size:1.6rem;color:var(--gold);line-height:1">120+</span>
+              <span style="font-family:var(--sans);font-size:.65rem;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.4)">Properties Sold</span>
+            </div>
+            <div>
+              <span style="display:block;font-family:var(--serif);font-size:1.6rem;color:var(--gold);line-height:1">27</span>
+              <span style="font-family:var(--sans);font-size:.65rem;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.4)">Avg. Days on Mkt</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;justify-content:space-between">
+        <div>
+          <h2 class="agent-name">Mohit Sangwan</h2>
+          <p class="agent-title-tag">Director | Sales — Willow Real Estate</p>
+          <div class="agent-bio">
+            <p>Proud Co-Founder and Director of Willow Real Estate, delivering a boutique, director-led experience built on personalised strategy and disciplined execution. Every client I work with receives direct access to me — not a junior agent or property manager — from the first conversation through to settlement.</p>
+            <p>I began my real estate career in 2017, building capability across property management, business development, and high-stakes negotiations. That operational depth now underpins the high-performance service model we execute at Willow. Every campaign is structured, every buyer is qualified, and every detail is managed with intention.</p>
+            <p>My focus is straightforward: create clarity, protect your value, and deliver outcomes that exceed what you believed was possible. I take personal ownership of every listing, proactively manage challenges before they become problems, and build relationships grounded in trust and transparency.</p>
+            <p>Whether you are selling your family home, an investment property, or making a significant lifestyle transition — I am committed to guiding you with precision, genuine insight, and a results-driven approach centred entirely on your long-term success.</p>
+          </div>
+        </div>
+        <div class="agent-badges" style="margin-top:28px">
+          <div class="badge"><span class="badge-lbl">Core Strengths</span>Negotiation · Marketing Strategy · Client Communication</div>
+          <div class="badge"><span class="badge-lbl">Active Licence</span>Land Agent — South Australia</div>
+          <div class="badge"><span class="badge-lbl">Satisfaction Rating</span>99% Client Satisfaction</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== S12: AGENT STATISTICS ===== -->
+<section id="s12" style="background:var(--cream)">
+  <div class="wrap">
+    <span class="sec-label">Performance</span>
+    <h2 class="sec-title">Agent Statistics</h2>
+    <div class="divider"></div>
+    <p style="color:#111;max-width:640px">Results matter. Here is a snapshot of recent performance — a track record built on consistent delivery, professional excellence, and an unwavering commitment to every client.</p>
+    <div class="stats-grid" style="grid-template-columns:repeat(2,1fr);max-width:500px">
+      <div class="stat-box"><span class="sn">120+</span><span class="sl">Properties Sold</span></div>
+      <div class="stat-box"><span class="sn">27</span><span class="sl">Avg. Days on Market</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== S13: COMMISSION ===== -->
+<section id="s13">
+  <div class="wrap">
+    <span class="sec-label">Our Fee</span>
+    <h2 class="sec-title">Commission Structure</h2>
+    <div class="divider"></div>
+    <p style="color:#111;max-width:660px">Our commission reflects the service, expertise, and results we deliver. We are transparent about our fees and believe in straightforward arrangements with no surprises.</p>
+    <div class="comm-box">
+      <div>
+        <h3>Commission Rate</h3>
+        <p>Our agreed commission rate for the sale of your property is:</p>
+        <div class="comm-rate">1.1% inc. GST</div>
+        <p style="font-size:.83rem;opacity:.65">Inclusive of GST. Payable only upon successful sale and settlement.</p>
+      </div>
+      <div>
+        <h3>What This Includes</h3>
+        <ul class="comm-list">
+          <li>Full campaign management from listing to settlement</li>
+          <li>All open inspections and private showings</li>
+          <li>Professional negotiation on your behalf</li>
+          <li>Weekly reporting and buyer feedback</li>
+          <li>Contract management and solicitor liaising</li>
+          <li>24/7 agent availability throughout the campaign</li>
+        </ul>
+      </div>
+    </div>
+    <div style="margin-top:20px;background:var(--gray);border-radius:8px;padding:18px 22px">
+      <p style="font-size:.9rem;color:#111;margin:0"><strong style="color:var(--gd)">No Sale, No Fee.</strong> Our commission is only payable upon successful sale and settlement. You pay nothing if we do not sell your property.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== S14: NEXT STEPS ===== -->
+<section id="s14" style="background:var(--gray)">
+  <div class="wrap">
+    <span class="sec-label">Moving Forward</span>
+    <h2 class="sec-title">Next Steps</h2>
+    <div class="divider"></div>
+    <p style="color:#111;max-width:640px">We are excited about the opportunity to work together. Here is what happens from here:</p>
+    <div class="steps-grid">
+      <div class="step">
+        <span class="step-num">01</span>
+        <h4>Sign the Agency Agreement</h4>
+        <p>Review and sign the exclusive sales authority, confirming your appointment of Willow Real Estate as your agent. We walk you through every clause — no surprises, no pressure.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">02</span>
+        <h4>Pre-Campaign Preparation</h4>
+        <p>Professional photography, copywriting, floorplan, and all marketing materials are arranged and produced. Signboard is installed. Portal listings are built and reviewed with you before going live.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">03</span>
+        <h4>Campaign Launch</h4>
+        <p>Your property goes live simultaneously across all portals and social channels. Our buyer database is contacted immediately. Open inspections are scheduled and the campaign is underway.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">04</span>
+        <h4>Sale &amp; Settlement</h4>
+        <p>We negotiate the strongest possible price on your behalf, exchange contracts, and actively manage every detail from execution through to a smooth, stress-free settlement.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== S15: THANK YOU ===== -->
+<section id="s15" class="thankyou">
+  <img class="thankyou-bg" src="https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?w=1600&q=80" alt="">
+  <div class="thankyou-ovl"></div>
+  <div class="thankyou-content">
+  <h2>Thank you, Mohit.</h2>
+  <p>We sincerely appreciate the opportunity to present this proposal to you.</p>
+  <p style="font-size:.92rem;color:#fff">Choosing the right agent is one of the most important decisions in your property journey. We would be honoured to earn your trust and deliver an outstanding result for you and your family. We look forward to working with you.</p>
+  <a class="btn-proceed" href="#">Let's Proceed →</a>
+  <p style="color:rgba(255,255,255,.75);font-family:var(--sans);font-size:.82rem;margin-top:16px">Click above to confirm your interest — we will be in touch within 24 hours.</p>
+  </div><!-- /thankyou-content -->
+</section>
+
+<!-- ===== S16: FOOTER ===== -->
+<footer style="background:#1A1410;padding:60px 0 28px;text-align:center">
+  <div style="max-width:1280px;margin:0 auto;padding:0 80px">
+    <img src="http://eagle-host.s3-us-west-2.amazonaws.com/uploads/686f4023c7605457d14f63c1aeae541d/Logo_Willow Real Estate-20.png" alt="Willow Real Estate" style="height:52px;width:auto;object-fit:contain;opacity:.92;margin-bottom:20px">
+    <p style="font-family:var(--sans);font-size:.82rem;color:rgba(255,255,255,.75);font-style:italic;margin-bottom:0">South Australia's trusted property partner.</p>
+  </div>
+  <div style="max-width:1280px;margin:36px auto 0;padding:20px 80px 0;border-top:1px solid rgba(255,255,255,.15);font-family:var(--sans);font-size:.72rem;color:rgba(255,255,255,.7);display:flex;justify-content:space-between">
+    <span>© 2026 Willow Real Estate. All rights reserved.</span>
+    <span>Prepared 27 May 2026</span>
+  </div>
+</footer>
+
+<script>
+// ============ MULTI-STEP INTAKE ============
+let currentStep = 1;
+const totalSteps = 5;
+const stepMeta = [
+  {t:'Vendor &amp; Property Details', s:'Basic details about the vendor and the property.'},
+  {t:'Property Features',             s:'Describe what makes this property special and who will buy it.'},
+  {t:'Marketing Costs',               s:'Enter the investment figures for this campaign.'},
+  {t:'Recent Comparable Sales',       s:'Add 3 recent sales in the area for market comparison.'},
+  {t:'Commission',                    s:'Set the commission rate for this engagement.'}
+];
+
+function updateStepUI() {
+  for (let i = 1; i <= totalSteps; i++) {
+    const d = document.getElementById('dot-' + i);
+    if (i < currentStep)       { d.className = 'step-dot done';    d.textContent = '✓'; }
+    else if (i === currentStep){ d.className = 'step-dot current'; d.textContent = i;   }
+    else                       { d.className = 'step-dot';         d.textContent = i;   }
+    if (i < totalSteps) {
+      document.getElementById('line-' + i).className = 'step-line' + (i < currentStep ? ' done' : '');
+    }
+  }
+  document.getElementById('intake-title').innerHTML = stepMeta[currentStep - 1].t;
+  document.getElementById('intake-sub').textContent  = stepMeta[currentStep - 1].s;
+  document.querySelectorAll('.intake-step').forEach((el, i) =>
+    el.classList.toggle('active', i + 1 === currentStep));
+  document.getElementById('btn-back').style.display = currentStep > 1 ? 'block' : 'none';
+  document.getElementById('btn-next').style.display = currentStep < totalSteps ? 'flex' : 'none';
+  document.getElementById('btn-gen').style.display  = currentStep === totalSteps ? 'flex' : 'none';
+  document.getElementById('intake-note-txt').textContent = 'Step ' + currentStep + ' of ' + totalSteps;
+}
+
+function validateStep() {
+  const step = document.getElementById('step' + currentStep);
+  let valid = true;
+  step.querySelectorAll('input[required], textarea[required]').forEach(el => {
+    if (!el.value.trim()) { el.classList.add('err'); valid = false; }
+    else el.classList.remove('err');
+  });
+  if (currentStep === 2) {
+    const mg = document.getElementById('methodGrid');
+    const ok = document.querySelector('input[name="method"]:checked');
+    if (!ok) { mg.style.outline = '2px solid #C84040'; mg.style.borderRadius = '8px'; valid = false; }
+    else      { mg.style.outline = 'none'; }
+  }
+  return valid;
+}
+
+function nextStep() {
+  if (!validateStep()) return;
+  currentStep++;
+  updateStepUI();
+  document.querySelector('.intake-body').scrollTop = 0;
+}
+
+function prevStep() {
+  if (currentStep > 1) { currentStep--; updateStepUI(); document.querySelector('.intake-body').scrollTop = 0; }
+}
+
+// ============ FETCH COMPARABLES ============
+async function fetchComparables() {
+  const addr = document.getElementById('f-address').value.trim();
+  const beds = parseInt(document.getElementById('f-beds').value) || 3;
+  const btn  = document.getElementById('btn-fetch');
+  const icon = document.getElementById('fetch-icon');
+  const lbl  = document.getElementById('fetch-label');
+
+  if (!addr) {
+    lbl.textContent = 'Enter the property address in Step 1 first';
+    btn.classList.add('failed'); return;
+  }
+
+  // Parse suburb + postcode — handles "14 Acacia Drive, Norwood SA 5067"
+  const m = addr.match(/,\s*([A-Za-z][A-Za-z\s'-]*?)\s*,?\s*SA\s*(\d{4})/i);
+  if (!m) {
+    lbl.textContent = 'Address must include suburb, SA and postcode (e.g. Norwood SA 5067)';
+    btn.classList.add('failed'); return;
+  }
+
+  const suburb   = m[1].trim().toLowerCase().replace(/\s+/g, '-');
+  const postcode = m[2];
+  const bedsMin  = Math.max(1, beds - 1);
+  const bedsMax  = beds + 1;
+
+  btn.disabled = true;
+  btn.classList.remove('success','failed');
+  icon.className = 'spin'; icon.textContent = '⟳';
+  lbl.textContent = 'Searching Domain.com.au…';
+
+  const domainUrl = `https://www.domain.com.au/sold-listings/${suburb}-sa-${postcode}/?bedrooms=${bedsMin}-${bedsMax}&excludeunderoffer=1`;
+  const proxies   = [
+    `https://corsproxy.io/?${encodeURIComponent(domainUrl)}`,
+    `https://api.allorigins.win/get?url=${encodeURIComponent(domainUrl)}`
+  ];
+
+  let html = null;
+  for (const proxy of proxies) {
+    try {
+      const res = await fetch(proxy);
+      if (!res.ok) continue;
+      const body = await res.json().catch(() => null);
+      html = body?.contents ?? await (await fetch(proxy)).text();
+      if (html && html.includes('__NEXT_DATA__')) break;
+    } catch(e) { continue; }
+  }
+
+  if (!html) {
+    setFail(btn, icon, lbl, 'Could not reach Domain.com.au — enter details manually'); return;
+  }
+
+  try {
+    const nd = html.match(/<script id="__NEXT_DATA__"[^>]*>([\s\S]*?)<\/script>/);
+    if (!nd) throw new Error('Page structure not recognised');
+    const pageData = JSON.parse(nd[1]);
+
+    const listings = extractListings(pageData);
+    if (!listings || listings.length === 0) throw new Error('No recent sales found nearby');
+
+    const slots = ['s1','s2','s3'];
+    listings.slice(0, 3).forEach((p, i) => {
+      const id = slots[i];
+      setValue(id+'-addr',  p.address);
+      setValue(id+'-beds',  p.beds);
+      setValue(id+'-baths', p.baths);
+      setValue(id+'-car',   p.car);
+      setValue(id+'-land',  p.land ? p.land + 'm²' : '');
+      setValue(id+'-price', p.price ? String(p.price).replace(/[^0-9]/g,'') : '');
+      setValue(id+'-date',  p.date);
+    });
+
+    icon.className = ''; icon.textContent = '✓';
+    lbl.textContent = listings.length >= 3
+      ? '3 comparable sales found — review below'
+      : `${listings.length} sale(s) found — fill remaining entries manually`;
+    btn.classList.add('success');
+
+  } catch(err) {
+    setFail(btn, icon, lbl, 'Could not parse results — enter details manually');
+    console.warn('fetchComparables:', err);
+  }
+}
+
+function setFail(btn, icon, lbl, msg) {
+  btn.disabled = false;
+  icon.className = ''; icon.textContent = '⚠';
+  lbl.textContent = msg;
+  btn.classList.add('failed');
+}
+
+function setValue(id, val) {
+  const el = document.getElementById('f-' + id);
+  if (el && val !== undefined && val !== null && val !== '') el.value = val;
+}
+
+function extractListings(data) {
+  // Try known Next.js page-data paths for domain.com.au sold listings
+  const candidates = [
+    data?.props?.pageProps?.listingsMap,
+    data?.props?.pageProps?.componentData?.listingsMap,
+    data?.props?.pageProps?.searchResults,
+  ];
+
+  for (const map of candidates) {
+    if (!map) continue;
+    // listingsMap is usually { [id]: { listing: {...} } }
+    if (typeof map === 'object' && !Array.isArray(map)) {
+      const vals = Object.values(map);
+      if (vals.length > 0 && (vals[0]?.listing || vals[0]?.propertyDetails)) {
+        return vals.map(v => parseListing(v.listing || v)).filter(Boolean);
+      }
+    }
+    if (Array.isArray(map)) {
+      return map.map(v => parseListing(v.listing || v)).filter(Boolean);
+    }
+  }
+
+  // Recursive fallback: find first array > 2 items that looks like listings
+  return deepFind(data, 0);
+}
+
+function parseListing(l) {
+  if (!l) return null;
+  const pd   = l.propertyDetails || l.property || l;
+  const sold = l.soldDetails     || l.priceDetails || l.price || {};
+  const addr = pd.displayableAddress || pd.streetAddress
+             || [pd.streetNumber, pd.street, pd.suburb].filter(Boolean).join(' ')
+             || '';
+  if (!addr) return null;
+
+  const rawPrice = sold.soldPrice ?? sold.price ?? sold.displayPrice ?? '';
+  const rawDate  = sold.soldDate  ?? sold.date  ?? l.soldDate ?? '';
+
+  let isoDate = '';
+  if (rawDate) {
+    try { isoDate = new Date(rawDate).toISOString().split('T')[0]; } catch(e) {}
+  }
+
+  return {
+    address: addr,
+    beds:    pd.bedrooms  ?? pd.beds     ?? '',
+    baths:   pd.bathrooms ?? pd.baths    ?? '',
+    car:     pd.carspaces ?? pd.carSpaces ?? pd.parking ?? '',
+    land:    pd.landArea  ?? pd.land     ?? '',
+    price:   typeof rawPrice === 'number' ? rawPrice : String(rawPrice).replace(/[^0-9]/g,''),
+    date:    isoDate
+  };
+}
+
+function deepFind(obj, depth) {
+  if (depth > 7 || !obj || typeof obj !== 'object') return null;
+  if (Array.isArray(obj) && obj.length >= 2) {
+    const mapped = obj.map(v => parseListing(v?.listing || v)).filter(Boolean);
+    if (mapped.length >= 2) return mapped;
+  }
+  for (const k of Object.keys(obj)) {
+    const found = deepFind(obj[k], depth + 1);
+    if (found) return found;
+  }
+  return null;
+}
+
+function generateProposal() {
+  if (!validateStep()) return;
+
+  function parseAUD(s) { const n = parseFloat(s.replace(/[^0-9.]/g, '')); return isNaN(n) ? 0 : n; }
+  function fmtAUD(n)   { return '$' + n.toLocaleString('en-AU', {minimumFractionDigits:0}); }
+  function fmtDate(s)  {
+    if (!s) return '';
+    const d = new Date(s + 'T00:00:00');
+    return d.toLocaleDateString('en-AU', {day:'numeric', month:'long', year:'numeric'});
+  }
+
+  const adv  = document.getElementById('f-adv').value.trim();
+  const sign = document.getElementById('f-sign').value.trim();
+  const bro  = document.getElementById('f-bro').value.trim();
+  const dl   = document.getElementById('f-dl').value.trim();
+  const total = parseAUD(adv) + parseAUD(sign) + parseAUD(bro) + parseAUD(dl);
+  const method = document.querySelector('input[name="method"]:checked');
+  const commNote = document.getElementById('f-comm-note').value.trim();
+
+  const data = {
+    VENDOR_FIRST_NAME: document.getElementById('f-fname').value.trim(),
+    VENDOR_LAST_NAME:  document.getElementById('f-lname').value.trim(),
+    PROPERTY_ADDRESS:  document.getElementById('f-address').value.trim(),
+    BEDS:              document.getElementById('f-beds').value.trim(),
+    BATHS:             document.getElementById('f-baths').value.trim(),
+    GARAGE:            document.getElementById('f-car').value.trim(),
+    LAND_SIZE:         document.getElementById('f-land').value.trim(),
+    KEY_STRENGTHS:     document.getElementById('f-strengths').value.trim(),
+    BUYER_POOL:        document.getElementById('f-buyers').value.trim(),
+    RECOMMENDED_METHOD: method ? method.value : '',
+    ADVERTISING_COST:        adv  ? fmtAUD(parseAUD(adv))  : '',
+    ADVERTISING_DESCRIPTION: 'realestate.com.au Premier+ & domain.com.au Highlight listing',
+    SIGNBOARD_COST:          sign ? fmtAUD(parseAUD(sign)) : '',
+    SIGNBOARD_DESCRIPTION:   'Professional Willow branded signboard with photo panel',
+    BROCHURES_COST:          bro  ? fmtAUD(parseAUD(bro))  : '',
+    BROCHURES_DESCRIPTION:   'A4 full-colour double-sided brochures',
+    MAILCARDS_COST:          dl   ? fmtAUD(parseAUD(dl))   : '',
+    MAILCARDS_DESCRIPTION:   'DL flyers letterbox drop to surrounding streets',
+    TOTAL_MARKETING_COST:    fmtAUD(total),
+    COMMISSION_RATE: document.getElementById('f-comm-rate').value.trim(),
+    COMMISSION_NOTE: commNote || 'Inclusive of GST. Payable only upon successful sale and settlement.',
+    PROPOSAL_DATE:   new Date().toLocaleDateString('en-AU', {day:'numeric', month:'long', year:'numeric'})
+  };
+
+  // Populate all .ph spans
+  document.querySelectorAll('.ph').forEach(el => {
+    const key = el.textContent.trim().replace(/^\{\{|\}\}$/g, '');
+    if (data[key] !== undefined && data[key] !== '') {
+      el.textContent = data[key];
+      el.style.cssText = 'background:none;border:none;padding:0;font-family:inherit;font-size:inherit;color:inherit;border-radius:0';
+    }
+  });
+
+  // Populate Key Strengths block
+  const ksBlock = document.getElementById('key-strengths-block');
+  if (ksBlock && data.KEY_STRENGTHS) {
+    const items = data.KEY_STRENGTHS.split(/[\n,·•]+/).map(s => s.trim()).filter(Boolean);
+    ksBlock.className = '';
+    ksBlock.style.cssText = 'margin:0';
+    ksBlock.innerHTML = '<ul class="strength-list">' +
+      items.map(item => `<li>${item}</li>`).join('') +
+      '</ul>';
+  }
+
+  // Populate Buyer Pool block
+  const bpBlock = document.getElementById('buyer-pool-block');
+  if (bpBlock && data.BUYER_POOL) {
+    const tags = data.BUYER_POOL.split(/[\n,·•]+/).map(s => s.trim()).filter(Boolean);
+    bpBlock.className = '';
+    bpBlock.style.cssText = 'margin:0';
+    bpBlock.innerHTML = '<div class="buyer-tags">' +
+      tags.map(t => `<span class="buyer-tag">${t}</span>`).join('') +
+      '</div>';
+  }
+
+  // Render comparable sale cards from form data
+  const g = document.getElementById('salesGrid');
+  const sales = [
+    { n:1, id:'s1' }, { n:2, id:'s2' }, { n:3, id:'s3' }
+  ].map(({id}) => ({
+    addr:  document.getElementById('f-'+id+'-addr').value.trim(),
+    beds:  document.getElementById('f-'+id+'-beds').value.trim(),
+    baths: document.getElementById('f-'+id+'-baths').value.trim(),
+    car:   document.getElementById('f-'+id+'-car').value.trim(),
+    land:  document.getElementById('f-'+id+'-land').value.trim(),
+    price: fmtAUD(parseAUD(document.getElementById('f-'+id+'-price').value)),
+    date:  fmtDate(document.getElementById('f-'+id+'-date').value)
+  }));
+  g.innerHTML = sales.map(s => `
+    <div class="sale-card">
+      <div class="sale-img ph-img">[PROPERTY PHOTO]</div>
+      <div class="sale-body">
+        <p class="sale-addr">${s.addr}</p>
+        <div class="sale-specs-row">
+          <span>🛏 ${s.beds}</span><span>🚿 ${s.baths}</span><span>🚗 ${s.car}</span><span>📐 ${s.land}</span>
+        </div>
+        <p class="sale-price">${s.price}</p>
+        <p class="sale-date">Sold ${s.date}</p>
+      </div>
+    </div>`).join('');
+
+  // Dismiss intake
+  const intake = document.getElementById('intake');
+  intake.classList.add('hide');
+  setTimeout(() => intake.style.display = 'none', 520);
+  window.scrollTo(0, 0);
+}
+
+// ============ TESTIMONIAL CAROUSEL ============
+(function(){
+  const track = document.getElementById('testTrack');
+  const dotsEl = document.getElementById('testDots');
+  if (!track) return;
+
+  const cards   = track.querySelectorAll('.test-card');
+  const total   = cards.length;
+  let current   = 0;
+  let autoTimer;
+
+  // Build dots
+  cards.forEach((_, i) => {
+    const d = document.createElement('button');
+    d.className = 'test-dot' + (i === 0 ? ' active' : '');
+    d.onclick = () => goTo(i);
+    dotsEl.appendChild(d);
+  });
+
+  function goTo(n) {
+    current = (n + total) % total;
+    const cardW = cards[0].offsetWidth + 20; // card + margin-right
+    track.style.transform = `translateX(-${current * cardW}px)`;
+    dotsEl.querySelectorAll('.test-dot').forEach((d, i) =>
+      d.classList.toggle('active', i === current));
+  }
+
+  window.testSlide = function(dir) { clearInterval(autoTimer); goTo(current + dir); startAuto(); };
+
+  function startAuto() {
+    autoTimer = setInterval(() => goTo(current + 1), 4500);
+  }
+  startAuto();
+
+  // Recalculate on resize
+  window.addEventListener('resize', () => goTo(current));
+})();
+
+// ============ PROGRESS BAR ============
+window.addEventListener('scroll', () => {
+  const p = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
+  document.getElementById('progress').style.width = p + '%';
+});
+
+// ============ TAB SWITCHER ============
+function tab(e, group, id) {
+  const c = e.target.closest('.tabs');
+  c.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  c.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+  e.target.classList.add('active');
+  const el = document.getElementById(group + '-' + id);
+  if (el) el.classList.add('active');
+}
+</script>
+</body>
+</html>
